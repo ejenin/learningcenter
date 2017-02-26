@@ -16,8 +16,14 @@ namespace testProject.Controllers {
 
         [HttpPost]
         public ActionResult Login(string login, string password) {
-            string type = login + "|" + password;
-            return null;
+            if (login == "admin" && password == "admin") {
+                //todo: redirect to feed controller
+                return null;
+            }
+            else {
+                ViewBag.ErrorMessage = "Пользователя с такими данными не существует!";
+                return View();
+            }
         }
 
     }
