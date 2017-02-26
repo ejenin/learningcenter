@@ -1,0 +1,27 @@
+﻿body {
+    background-color: white;
+}
+
+#autorization {
+    width: 400px;
+    margin: 0px auto;
+    height: 150px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #ffffff, #dcdcdc);
+    margin-top: 5%;
+}
+
+.row {
+    height: 30px;
+    margin-top: 15px;
+}
+
+.cell {
+    width: 49%;
+    display: inline-block;
+}
+
+#autorization input {
+    margin-left: 5px;
+}
