@@ -18,7 +18,10 @@ namespace testProject.Controllers {
         public ActionResult Login(string login, string password) {
             if (login == "admin" && password == "admin") {
                 //todo: redirect to feed controller
-                return null;
+                //ViewBag.ErrorMessage = "Зашли!";
+                //return View();
+                return RedirectPermanent("home/feed");
+                //return null;
             }
             else {
                 ViewBag.ErrorMessage = "Пользователя с такими данными не существует!";
