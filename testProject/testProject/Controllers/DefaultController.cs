@@ -18,6 +18,7 @@ namespace testProject.Controllers {
         public ActionResult Login(string login, string password) {
             if (login == "admin" && password == "admin") {
                 //todo: redirect to feed controller
+                Session["UserId"] = 1;
                 return null;
             }
             else {
