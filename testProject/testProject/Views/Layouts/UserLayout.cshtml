@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Styles/UserLayout.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="header">
+        <div class="navigation_button">
+            Лента
+        </div>
+        <div class="navigation_button">
+            Мои группы
+        </div>
+        <div class="navigation_button">
+            Настройки
+        </div>
+
+        <div class="navigation_button" style="float: right;">
+            Выход
+        </div>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
