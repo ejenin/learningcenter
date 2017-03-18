@@ -1,5 +1,6 @@
 ﻿body {
     margin: 0px;
+    font-family: Arial;
 }
 
 div.header {
@@ -26,3 +27,37 @@ div.navigation_button:hover {
     line-height: 43px;
     transition: 0.09s;
 }
+
+div.news_Information {
+    background-color: lightblue;
+    width:100%;
+    border: 1px solid blue;
+    border-radius: 5px;
+}
+
+div.news_Positive {
+    background-color: lightgreen;
+    width:100%;
+    border: 1px solid green;
+    border-radius: 5px;
+}
+
+div.news_Negative {
+    background-color: pink;
+    width:100%;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+div.news_header {
+    font-weight: 600;
+}
+
+div.news_time {
+    float: right;
+    color: darkgray;
+}
+
+div.news_text {
+
+}        

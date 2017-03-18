@@ -1,6 +1,17 @@
-﻿@{
+﻿@model testProject.Models.ViewModels.FeedModel
+@{
     ViewBag.Title = "Лента событий";
     Layout = "~/Views/Layouts/UserLayout.cshtml";
 }
 
 <h2>Лента событий</h2>
+
+@foreach (var item in Model.newsToShow) {
+    <hr>
+    <div class="news_@item.Type.ToString()">
+        <div class="news_time">@item.CreateDate.ToLongDateString() @item.CreateDate.ToLongTimeString()</div>
+        <input type="hidden" value="@item.Id"/>
+        <div class="news_header">@item.Header</div>
+        <div class="news_text">@item.Text</div>
+    </div>
+}

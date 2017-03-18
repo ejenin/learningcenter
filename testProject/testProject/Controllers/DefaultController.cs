@@ -17,9 +17,8 @@ namespace testProject.Controllers {
         [HttpPost]
         public ActionResult Login(string login, string password) {
             if (login == "admin" && password == "admin") {
-                //todo: redirect to feed controller
-                //ViewBag.ErrorMessage = "Зашли!";
-                //return View();
+                //todo: redirect to feed controller DONE
+                //todo: set user information somewhere
                 return RedirectPermanent("home/feed");
                 //return null;
             }
