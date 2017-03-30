@@ -1,0 +1,19 @@
+﻿@model testProject.Models.ViewModels.MyGroups.MyGroupsModel
+@{
+    ViewBag.Title = "Мои группы";
+    Layout = "~/Views/Layouts/UserLayout.cshtml";
+}
+
+<h2>Мои группы</h2>
+
+<div class="group">
+    @foreach (var item in Model.groups) {
+        <hr />
+        <input type="hidden" value="@item.Id"/>
+        @item.GroupName
+        @item.Area
+        @item.Course
+        @item.DateStart.ToShortDateString()
+        @item.DateEnd.ToShortDateString()
+    }
+</div>

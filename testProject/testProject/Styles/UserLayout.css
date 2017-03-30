@@ -30,23 +30,26 @@ div.navigation_button:hover {
 
 div.news_Information {
     background-color: lightblue;
-    width:100%;
+    width:99%;
     border: 1px solid blue;
     border-radius: 5px;
+    margin-left: 5px;
 }
 
 div.news_Positive {
     background-color: lightgreen;
-    width:100%;
+    width:99%;
     border: 1px solid green;
     border-radius: 5px;
+    margin-left: 5px;
 }
 
 div.news_Negative {
     background-color: pink;
-    width:100%;
+    width:99%;
     border: 1px solid red;
     border-radius: 5px;
+    margin-left: 5px;
 }
 
 div.news_header {
@@ -58,6 +61,14 @@ div.news_time {
     color: darkgray;
 }
 
+.menu_link {
+    text-decoration: none;
+}
+
 div.news_text {
 
 }        
+
+div.group {
+    background-color: lightgray;
+}

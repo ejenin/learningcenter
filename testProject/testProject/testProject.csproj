@@ -115,6 +115,8 @@
     </Compile>
     <Compile Include="Models\ViewModels\Feed\FeedModel.cs" />
     <Compile Include="Models\ViewModels\Feed\News.cs" />
+    <Compile Include="Models\ViewModels\MyGroups\Group.cs" />
+    <Compile Include="Models\ViewModels\MyGroups\MyGroupsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Feed.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\MyGroups.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

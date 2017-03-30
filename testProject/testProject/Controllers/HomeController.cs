@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using testProject.Models.ViewModels;
+using testProject.Models.ViewModels.MyGroups;
 
 namespace testProject.Controllers {
     public class HomeController : Controller {
@@ -42,6 +43,48 @@ namespace testProject.Controllers {
             feed.newsToShow = feed.newsToShow.OrderByDescending(n => n.Id).ToList();
 
             return View(feed);
+        }
+
+        public ActionResult MyGroups() {
+            MyGroupsModel model = new MyGroupsModel();
+
+            model.groups.Add(new Group() {
+                Id = 3,
+                DateStart = DateTime.Now,
+                DateEnd = DateTime.Now,
+                GroupName = "17-67-0004",
+                Area = "г. Тобольск, 9 мкр.",
+                Course = "Курс 1"
+            });
+
+            model.groups.Add(new Group() {
+                Id = 2,
+                DateStart = DateTime.Now,
+                DateEnd = DateTime.Now,
+                GroupName = "17-67-0003",
+                Area = "г. Тобольск, 9 мкр.",
+                Course = "Курс 1"
+            });
+
+            model.groups.Add(new Group() {
+                Id = 1,
+                DateStart = DateTime.Now,
+                DateEnd = DateTime.Now,
+                GroupName = "17-67-0002",
+                Area = "г. Тобольск, 9 мкр.",
+                Course = "Курс 1"
+            });
+
+            model.groups.Add(new Group() {
+                Id = 0,
+                DateStart = DateTime.Now,
+                DateEnd = DateTime.Now,
+                GroupName = "17-67-0001",
+                Area = "г. Тобольск, 9 мкр.",
+                Course = "Курс 1"
+            });
+
+            return View(model);
         }
 
     }
