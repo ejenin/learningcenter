@@ -34,6 +34,7 @@ div.news_Information {
     border: 1px solid blue;
     border-radius: 5px;
     margin-left: 5px;
+    padding: 5px;
 }
 
 div.news_Positive {
@@ -42,6 +43,7 @@ div.news_Positive {
     border: 1px solid green;
     border-radius: 5px;
     margin-left: 5px;
+    padding: 5px;
 }
 
 div.news_Negative {
@@ -50,7 +52,37 @@ div.news_Negative {
     border: 1px solid red;
     border-radius: 5px;
     margin-left: 5px;
+    padding: 5px;
 }
+
+
+div.news_Information_Readed {
+    background-color: #f1f5fc;
+    width:99%;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 5px;
+}
+
+div.news_Positive_Readed {
+    background-color: #f9fff9;
+    width:99%;
+    border: 1px solid lightgreen;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 5px;
+}
+
+div.news_Negative_Readed {
+    background-color: #fffafa;
+    width:99%;
+    border: 1px solid pink;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 5px;
+}
+
 
 div.news_header {
     font-weight: 600;

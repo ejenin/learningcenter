@@ -17,27 +17,60 @@ namespace testProject.Controllers {
                 Id = 0,
                 CreateDate = DateTime.Now,
                 Text = "Пример информационной новости",
-                Header = "Заголовок информационной новости",
+                Header = "Заголовок информационной непрочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Information,
-                ReaderId = 0
+                ReaderId = 0,
+                IsReaded = false
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
                 Id = 1,
                 CreateDate = DateTime.Now,
                 Text = "Пример позитивной новости",
-                Header = "Заголовок позитивной новости",
+                Header = "Заголовок позитивной непрочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Positive,
-                ReaderId = 0
+                ReaderId = 0,
+                IsReaded = false
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
                 Id = 2,
                 CreateDate = DateTime.Now,
                 Text = "Пример негативной новости",
-                Header = "Заголовок негативной новости",
+                Header = "Заголовок негативной непрочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Negative,
-                ReaderId = 0
+                ReaderId = 0,
+                IsReaded = false
+            });
+
+            feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+                Id = 3,
+                CreateDate = DateTime.Now,
+                Text = "Пример информационной новости",
+                Header = "Заголовок информационной прочитанной новости",
+                Type = Models.ViewModels.Feed.NewsType.Information,
+                ReaderId = 0,
+                IsReaded = true
+            });
+
+            feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+                Id = 4,
+                CreateDate = DateTime.Now,
+                Text = "Пример позитивной новости",
+                Header = "Заголовок позитивной прочитанной новости",
+                Type = Models.ViewModels.Feed.NewsType.Positive,
+                ReaderId = 0,
+                IsReaded = true
+            });
+
+            feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+                Id = 5,
+                CreateDate = DateTime.Now,
+                Text = "Пример негативной новости",
+                Header = "Заголовок негативной прочитанной новости",
+                Type = Models.ViewModels.Feed.NewsType.Negative,
+                ReaderId = 0,
+                IsReaded = true
             });
 
             feed.newsToShow = feed.newsToShow.OrderByDescending(n => n.Id).ToList();

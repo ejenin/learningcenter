@@ -8,7 +8,7 @@
 
 @foreach (var item in Model.newsToShow) {
     <hr>
-    <div class="news_@item.Type.ToString()">
+    <div class="news_@item.getCssClass()">
         <div class="news_time">@item.CreateDate.ToLongDateString() @item.CreateDate.ToLongTimeString()</div>
         <input type="hidden" value="@item.Id"/>
         <div class="news_header">@item.Header</div>
