@@ -81,40 +81,124 @@ namespace testProject.Controllers {
         public ActionResult MyLearning() {
             MyLearningModel model = new MyLearningModel();
 
-            model.groups.Add(new Group() {
+            DateTime start = new DateTime(2017, 03, 19);
+            DateTime end = new DateTime(2017, 03, 24);
+
+            model.actualGroups.Add(new Group() {
                 Id = 3,
-                DateStart = DateTime.Now,
-                DateEnd = DateTime.Now,
+                DateStart = start,
+                DateEnd = end,
                 GroupName = "17-67-0004",
                 Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1"
+                Course = "Курс 1",
+                Lecturer = "Бояркина Е.В."
             });
 
-            model.groups.Add(new Group() {
+            model.actualGroups.Add(new Group() {
                 Id = 2,
-                DateStart = DateTime.Now,
-                DateEnd = DateTime.Now,
+                DateStart = start,
+                DateEnd = end,
                 GroupName = "17-67-0003",
                 Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1"
+                Course = "Курс 1",
+                Lecturer = "Бояркина Е.В."
             });
 
-            model.groups.Add(new Group() {
+            model.actualGroups.Add(new Group() {
                 Id = 1,
-                DateStart = DateTime.Now,
-                DateEnd = DateTime.Now,
+                DateStart = start,
+                DateEnd = end,
                 GroupName = "17-67-0002",
                 Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1"
+                Course = "Курс 1",
+                Lecturer = "Бояркина Е.В."
             });
 
-            model.groups.Add(new Group() {
+            model.actualGroups.Add(new Group() {
                 Id = 0,
-                DateStart = DateTime.Now,
-                DateEnd = DateTime.Now,
+                DateStart = start,
+                DateEnd = end,
                 GroupName = "17-67-0001",
                 Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1"
+                Course = "Курс 1",
+                Lecturer = "Бояркина Е.В."
+            });
+
+
+
+            model.futureGroups.Add(new Group() {
+                Id = 0,
+                DateStart = start,
+                DateEnd = end,
+                GroupName = "17-67-0001",
+                Area = "г. Тобольск, 9 мкр.",
+                Course = "Курс 1",
+                Lecturer = "Бояркина Е.В."
+            });
+
+            model.futureGroups.Add(new Group() {
+                Id = 0,
+                DateStart = start,
+                DateEnd = end,
+                GroupName = "17-67-0001",
+                Area = "г. Тобольск, 9 мкр.",
+                Course = "Курс 1",
+                Lecturer = "Бояркина Е.В."
+            });
+
+            model.futureGroups.Add(new Group() {
+                Id = 0,
+                DateStart = start,
+                DateEnd = end,
+                GroupName = "17-67-0001",
+                Area = "г. Тобольск, 9 мкр.",
+                Course = "Курс 1",
+                Lecturer = "Бояркина Е.В."
+            });
+
+
+
+
+            model.passedGroups.Add(new LearningResult() {
+                Group = new Group() {
+                    Id = 0,
+                    DateStart = start,
+                    DateEnd = end,
+                    GroupName = "17-67-0001",
+                    Area = "г. Тобольск, 9 мкр.",
+                    Course = "Курс 1",
+                    Lecturer = "Бояркина Е.В."
+                },
+                IsSuccess = true,
+                Mark = "4"
+            });
+
+            model.passedGroups.Add(new LearningResult() {
+                Group = new Group() {
+                    Id = 0,
+                    DateStart = start,
+                    DateEnd = end,
+                    GroupName = "17-67-0001",
+                    Area = "г. Тобольск, 9 мкр.",
+                    Course = "Курс 1",
+                    Lecturer = "Бояркина Е.В."
+                },
+                IsSuccess = false,
+                Mark = "2"
+            });
+
+            model.passedGroups.Add(new LearningResult() {
+                Group = new Group() {
+                    Id = 0,
+                    DateStart = start,
+                    DateEnd = end,
+                    GroupName = "17-67-0001",
+                    Area = "г. Тобольск, 9 мкр.",
+                    Course = "Курс 1",
+                    Lecturer = "Бояркина Е.В."
+                },
+                IsSuccess = false,
+                Mark = "Пропуск занятия"
             });
 
             return View(model);

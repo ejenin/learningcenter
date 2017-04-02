@@ -5,10 +5,15 @@ using System.Web;
 
 namespace testProject.Models.ViewModels.MyGroups {
     public class MyLearningModel {
-        public List<Group> groups;
+
+        public List<Group> actualGroups;
+        public List<Group> futureGroups;
+        public List<LearningResult> passedGroups;
 
         public MyLearningModel() {
-            groups = new List<Group>();
+            actualGroups = new List<Group>();
+            futureGroups = new List<Group>();
+            passedGroups = new List<LearningResult>();
         }
     }
 }

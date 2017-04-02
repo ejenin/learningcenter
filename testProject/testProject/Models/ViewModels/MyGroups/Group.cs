@@ -11,5 +11,6 @@ namespace testProject.Models.ViewModels.MyGroups {
         public DateTime DateEnd { get; set; }
         public string Area { get; set; }
         public string Course { get; set; }
+        public string Lecturer { get; set; }
     }
 }

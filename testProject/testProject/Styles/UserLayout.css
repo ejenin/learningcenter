@@ -30,7 +30,7 @@ div.navigation_button:hover {
 
 div.news_Information {
     background-color: lightblue;
-    width:99%;
+    width:98%;
     border: 1px solid blue;
     border-radius: 5px;
     margin-left: 5px;
@@ -39,7 +39,7 @@ div.news_Information {
 
 div.news_Positive {
     background-color: lightgreen;
-    width:99%;
+    width:98%;
     border: 1px solid green;
     border-radius: 5px;
     margin-left: 5px;
@@ -48,17 +48,16 @@ div.news_Positive {
 
 div.news_Negative {
     background-color: pink;
-    width:99%;
+    width:98%;
     border: 1px solid red;
     border-radius: 5px;
     margin-left: 5px;
     padding: 5px;
 }
 
-
 div.news_Information_Readed {
     background-color: #f1f5fc;
-    width:99%;
+    width:98%;
     border: 1px solid lightblue;
     border-radius: 5px;
     margin-left: 5px;
@@ -67,7 +66,7 @@ div.news_Information_Readed {
 
 div.news_Positive_Readed {
     background-color: #f9fff9;
-    width:99%;
+    width:98%;
     border: 1px solid lightgreen;
     border-radius: 5px;
     margin-left: 5px;
@@ -76,7 +75,7 @@ div.news_Positive_Readed {
 
 div.news_Negative_Readed {
     background-color: #fffafa;
-    width:99%;
+    width:98%;
     border: 1px solid pink;
     border-radius: 5px;
     margin-left: 5px;
@@ -102,5 +101,35 @@ div.news_text {
 }        
 
 div.group {
+    line-height: 40px;
     background-color: lightgray;
+}
+
+div.group_done {
+    line-height: 40px;
+    background-color: lightgreen;
+}
+
+div.group_failed {
+    line-height: 40px;
+    background-color: pink;
+}
+
+div.group_done:hover {
+    cursor: pointer;
+}
+
+div.group_failed:hover {
+    cursor: pointer;
+}
+
+div.group:hover {
+    cursor: pointer;
+}
+
+div.hidden_block {
+    font-size: 15px;
+    line-height: 20px;
+    margin-left: 20px;
+    font-style: italic;
 }

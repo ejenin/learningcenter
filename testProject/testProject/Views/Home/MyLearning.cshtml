@@ -6,14 +6,40 @@
 
 <h2>Моё обучение</h2>
 
-<div class="group">
-    @foreach (var item in Model.groups) {
-        <hr />
-        <input type="hidden" value="@item.Id"/>
-        @item.GroupName
-        @item.Area
-        @item.Course
-        @item.DateStart.ToShortDateString()
-        @item.DateEnd.ToShortDateString()
-    }
-</div>
+<h3>Текущее обучение</h3>
+@foreach (var item in Model.actualGroups) {
+    <div class="group">Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
+        <div class="hidden_block">
+            Преподаватель: @item.Lecturer<br />
+            Площадка: @item.Area
+        </div>
+    </div>
+    
+    <br />
+}
+
+<h3>Предстоящее обучение</h3>
+@foreach (var item in Model.futureGroups) {
+    <div class="group">Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
+        <div class="hidden_block">
+            Преподаватель: @item.Lecturer<br />
+            Площадка: @item.Area
+        </div>
+    </div>
+    <br />
+}
+
+<h3>Прошедшее обучение</h3>
+@foreach (var item in Model.passedGroups) {
+    <div class="@item.getClass()">Группа: @item.Group.GroupName (@item.Group.Course) <div class="news_time">@item.Group.DateStart.ToShortDateString()-@item.Group.DateEnd.ToShortDateString()</div>
+        <div class="hidden_block">
+            Преподаватель: @item.Group.Lecturer<br />
+            Площадка: @item.Group.Area<br />
+            Оценка: @item.Mark
+        </div>
+    </div>
+    <br />
+}
+<!--TODO: подгружать конкретно это обучение аяксом? Ибо 
+    эта секция будет засоряться как шваль, и можно наму-
+    тить пагинацию со всеми прилегающими крутыми вещами-->

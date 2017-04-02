@@ -116,6 +116,7 @@
     <Compile Include="Models\ViewModels\Feed\FeedModel.cs" />
     <Compile Include="Models\ViewModels\Feed\News.cs" />
     <Compile Include="Models\ViewModels\MyGroups\Group.cs" />
+    <Compile Include="Models\ViewModels\MyGroups\LearningResult.cs" />
     <Compile Include="Models\ViewModels\MyGroups\MyLearningModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
