@@ -78,8 +78,8 @@ namespace testProject.Controllers {
             return View(feed);
         }
 
-        public ActionResult MyGroups() {
-            MyGroupsModel model = new MyGroupsModel();
+        public ActionResult MyLearning() {
+            MyLearningModel model = new MyLearningModel();
 
             model.groups.Add(new Group() {
                 Id = 3,

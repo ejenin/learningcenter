@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 
 namespace testProject.Models.ViewModels.MyGroups {
-    public class MyGroupsModel {
+    public class MyLearningModel {
         public List<Group> groups;
 
-        public MyGroupsModel() {
+        public MyLearningModel() {
             groups = new List<Group>();
         }
     }
