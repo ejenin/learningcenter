@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using testProject.Models.ViewModels;
 using testProject.Models.ViewModels.MyGroups;
+using testProject.Models.ViewModels.Planning;
 
 namespace testProject.Controllers {
     public class HomeController : Controller {
@@ -199,6 +200,50 @@ namespace testProject.Controllers {
                 },
                 IsSuccess = false,
                 Mark = "Пропуск занятия"
+            });
+
+            return View(model);
+        }
+
+        public ActionResult Planning() {
+            PlanningModel model = new PlanningModel();
+            model.BossFio = "Ткаченко Светлана Андреевна";
+            model.ochnCourses = new List<LearningCourse>();
+
+            model.ochnCourses.Add(new LearningCourse() {
+                Id = 1,
+                Name = "Корпоративная культура 1",
+                IsRemote = false
+            });
+
+            model.ochnCourses.Add(new LearningCourse() {
+                Id = 2,
+                Name = "Корпоративная культура 2",
+                IsRemote = false
+            });
+
+            model.ochnCourses.Add(new LearningCourse() {
+                Id = 3,
+                Name = "Дизайн мышление",
+                IsRemote = false
+            });
+
+            model.distCourses.Add(new LearningCourse() {
+                Id = 4,
+                Name = "Обращение с подарками",
+                IsRemote = true
+            });
+
+            model.distCourses.Add(new LearningCourse() {
+                Id = 5,
+                Name = "Проблемы при работе с кредитами",
+                IsRemote = true
+            });
+
+            model.distCourses.Add(new LearningCourse() {
+                Id = 6,
+                Name = "Соло на клавиатуре",
+                IsRemote = true
             });
 
             return View(model);

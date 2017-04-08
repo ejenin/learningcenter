@@ -1,0 +1,22 @@
+﻿@model testProject.Models.ViewModels.Planning.PlanningModel
+@{
+    ViewBag.Title = "Планирование обучения";
+    Layout = "~/Views/Layouts/UserLayout.cshtml";
+}
+
+<h2>Планирование обучения</h2>
+
+<h3>Ваш согласующий руководитель: @Model.BossFio</h3>
+
+@if (Model.distCourses.Count == 0 && Model.ochnCourses.Count == 0) {
+    <h3>Список курсов для планирования пуст!</h3>
+} else {
+    <h3>Очные программы</h3>
+    foreach (var item in Model.ochnCourses) {
+        <h5>@item.Name</h5>
+    }
+    <h3>Дистанционные программы</h3>
+    foreach (var item in Model.distCourses) {
+        <h5>@item.Name</h5>
+    }
+}
