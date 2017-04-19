@@ -10,8 +10,8 @@
 @foreach (var item in Model.actualGroups) {
     <div class="group">Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
         <div class="hidden_block">
-            Преподаватель: @item.Lecturer<br />
-            Площадка: @item.Area
+            Преподаватель: <a href="">@item.Lecturer</a><br />
+            Площадка: <a href="">@item.Area</a>
         </div>
     </div>
     
@@ -22,8 +22,8 @@
 @foreach (var item in Model.futureGroups) {
     <div class="group">Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
         <div class="hidden_block">
-            Преподаватель: @item.Lecturer<br />
-            Площадка: @item.Area
+            Преподаватель: <a href="">@item.Lecturer</a><br />
+            Площадка: <a href="">@item.Area</a>
         </div>
     </div>
     <br />
@@ -33,8 +33,8 @@
 @foreach (var item in Model.passedGroups) {
     <div class="@item.getClass()">Группа: @item.Group.GroupName (@item.Group.Course) <div class="news_time">@item.Group.DateStart.ToShortDateString()-@item.Group.DateEnd.ToShortDateString()</div>
         <div class="hidden_block">
-            Преподаватель: @item.Group.Lecturer<br />
-            Площадка: @item.Group.Area<br />
+            Преподаватель: <a href="">@item.Group.Lecturer</a><br />
+            Площадка: <a href="">@item.Group.Area</a><br />
             Оценка: @item.Mark
         </div>
     </div>

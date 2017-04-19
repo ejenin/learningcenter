@@ -138,3 +138,36 @@ div.hidden_block {
     margin-left: 20px;
     font-style: italic;
 }
+
+div.wrapper {
+    margin-left: 10px;
+}
+
+div.course_wrapper {
+    background-color: lightgray;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+div.course_soglasovan {
+    background-color: lightgreen;
+    padding: 5px;
+    height: 175px;
+    font-style: italic;
+}
+
+div.course_otkazan {
+    background-color: pink;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+div.wrapper a {
+    font-style: italic;
+}
+
+div.course_na_solgasovanii {
+    background-color: lightblue;
+    line-height: 40px;
+    padding-left: 10px;
+}

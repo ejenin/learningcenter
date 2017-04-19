@@ -87,88 +87,47 @@ namespace testProject.Controllers {
 
             model.actualGroups.Add(new Group() {
                 Id = 3,
-                DateStart = start,
-                DateEnd = end,
+                DateStart = new DateTime(2017, 04, 04),
+                DateEnd = new DateTime(2017, 04, 16),
                 GroupName = "17-67-0004",
                 Area = "г. Тобольск, 9 мкр.",
                 Course = "Курс 1",
-                Lecturer = "Бояркина Е.В."
-            });
-
-            model.actualGroups.Add(new Group() {
-                Id = 2,
-                DateStart = start,
-                DateEnd = end,
-                GroupName = "17-67-0003",
-                Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1",
-                Lecturer = "Бояркина Е.В."
-            });
-
-            model.actualGroups.Add(new Group() {
-                Id = 1,
-                DateStart = start,
-                DateEnd = end,
-                GroupName = "17-67-0002",
-                Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1",
-                Lecturer = "Бояркина Е.В."
-            });
-
-            model.actualGroups.Add(new Group() {
-                Id = 0,
-                DateStart = start,
-                DateEnd = end,
-                GroupName = "17-67-0001",
-                Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1",
-                Lecturer = "Бояркина Е.В."
+                Lecturer = "Иванов И.И."
             });
 
 
 
             model.futureGroups.Add(new Group() {
                 Id = 0,
-                DateStart = start,
-                DateEnd = end,
+                DateStart = new DateTime(2017, 05, 15),
+                DateEnd = new DateTime(2017, 05, 17),
                 GroupName = "17-67-0001",
                 Area = "г. Тобольск, 9 мкр.",
                 Course = "Курс 1",
-                Lecturer = "Бояркина Е.В."
+                Lecturer = "Иванов И.И."
             });
 
             model.futureGroups.Add(new Group() {
                 Id = 0,
-                DateStart = start,
-                DateEnd = end,
+                DateStart = new DateTime(2017, 06, 01),
+                DateEnd = new DateTime(2017, 06, 03),
                 GroupName = "17-67-0001",
                 Area = "г. Тобольск, 9 мкр.",
                 Course = "Курс 1",
-                Lecturer = "Бояркина Е.В."
+                Lecturer = "Иванов И.И."
             });
-
-            model.futureGroups.Add(new Group() {
-                Id = 0,
-                DateStart = start,
-                DateEnd = end,
-                GroupName = "17-67-0001",
-                Area = "г. Тобольск, 9 мкр.",
-                Course = "Курс 1",
-                Lecturer = "Бояркина Е.В."
-            });
-
 
 
 
             model.passedGroups.Add(new LearningResult() {
                 Group = new Group() {
                     Id = 0,
-                    DateStart = start,
-                    DateEnd = end,
+                    DateStart = new DateTime(2017, 02, 01),
+                    DateEnd = new DateTime(2017, 02, 03),
                     GroupName = "17-67-0001",
                     Area = "г. Тобольск, 9 мкр.",
                     Course = "Курс 1",
-                    Lecturer = "Бояркина Е.В."
+                    Lecturer = "Иванов И.И."
                 },
                 IsSuccess = true,
                 Mark = "4"
@@ -177,12 +136,12 @@ namespace testProject.Controllers {
             model.passedGroups.Add(new LearningResult() {
                 Group = new Group() {
                     Id = 0,
-                    DateStart = start,
-                    DateEnd = end,
+                    DateStart = new DateTime(2017, 02, 05),
+                    DateEnd = new DateTime(2017, 02, 07),
                     GroupName = "17-67-0001",
                     Area = "г. Тобольск, 9 мкр.",
                     Course = "Курс 1",
-                    Lecturer = "Бояркина Е.В."
+                    Lecturer = "Иванов И.И."
                 },
                 IsSuccess = false,
                 Mark = "2"
@@ -191,12 +150,12 @@ namespace testProject.Controllers {
             model.passedGroups.Add(new LearningResult() {
                 Group = new Group() {
                     Id = 0,
-                    DateStart = start,
-                    DateEnd = end,
+                    DateStart = new DateTime(2017, 02, 10),
+                    DateEnd = new DateTime(2017, 02, 15),
                     GroupName = "17-67-0001",
                     Area = "г. Тобольск, 9 мкр.",
                     Course = "Курс 1",
-                    Lecturer = "Бояркина Е.В."
+                    Lecturer = "Иванов И.И."
                 },
                 IsSuccess = false,
                 Mark = "Пропуск занятия"
@@ -207,44 +166,68 @@ namespace testProject.Controllers {
 
         public ActionResult Planning() {
             PlanningModel model = new PlanningModel();
-            model.BossFio = "Ткаченко Светлана Андреевна";
+            model.BossFio = "Петров Пётр Петрович";
             model.ochnCourses = new List<LearningCourse>();
 
             model.ochnCourses.Add(new LearningCourse() {
                 Id = 1,
-                Name = "Корпоративная культура 1",
-                IsRemote = false
+                Name = "Мастерство владения холодными звонками (уровень 2)",
+                IsRemote = false,
+                Status = Status.None
             });
 
             model.ochnCourses.Add(new LearningCourse() {
                 Id = 2,
-                Name = "Корпоративная культура 2",
-                IsRemote = false
+                Name = "Мастерство владения холодными (уровень 1)",
+                IsRemote = false,
+                Status = Status.NaSoglasovanii
             });
 
             model.ochnCourses.Add(new LearningCourse() {
                 Id = 3,
-                Name = "Дизайн мышление",
-                IsRemote = false
+                Name = "Курсы по EXCEL 2010",
+                IsRemote = false,
+                Status = Status.Otkazana,
+                DataSoglasovaniya = new DateTime(2017, 03, 30)
+            });
+
+            model.ochnCourses.Add(new LearningCourse() {
+                Id = 3,
+                Name = "Развитие лидерских качеств",
+                IsRemote = false,
+                Status = Status.Soglasovana,
+                ChosenGroup = new Group() {
+                    Area = "г. Тобольск, ул. Мира, 19",
+                    DateStart = new DateTime(2017, 04, 10),
+                    DateEnd = new DateTime(2017, 04, 12),
+                    GroupName = "17-67-2099",
+                    Lecturer = "Иванов Е.С."
+                },
+                DataSoglasovaniya = new DateTime(2017,04,13)
             });
 
             model.distCourses.Add(new LearningCourse() {
                 Id = 4,
                 Name = "Обращение с подарками",
-                IsRemote = true
+                IsRemote = true,
+                Status = Status.None
             });
 
             model.distCourses.Add(new LearningCourse() {
                 Id = 5,
                 Name = "Проблемы при работе с кредитами",
-                IsRemote = true
+                IsRemote = true,
+                Status = Status.None
             });
 
             model.distCourses.Add(new LearningCourse() {
                 Id = 6,
                 Name = "Соло на клавиатуре",
-                IsRemote = true
+                IsRemote = true,
+                Status = Status.None
             });
+
+            model.ochnCourses = model.ochnCourses.OrderBy(o => o.Status).ToList();
 
             return View(model);
         }

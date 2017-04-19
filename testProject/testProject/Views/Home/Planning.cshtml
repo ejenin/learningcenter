@@ -6,17 +6,46 @@
 
 <h2>Планирование обучения</h2>
 
-<h3>Ваш согласующий руководитель: @Model.BossFio</h3>
+<h3 style="margin-left: 10px">Ваш согласующий руководитель: @Model.BossFio</h3>
 
-@if (Model.distCourses.Count == 0 && Model.ochnCourses.Count == 0) {
-    <h3>Список курсов для планирования пуст!</h3>
-} else {
-    <h3>Очные программы</h3>
-    foreach (var item in Model.ochnCourses) {
-        <h5>@item.Name</h5>
+<div class="wrapper">
+    @if (Model.distCourses.Count == 0 && Model.ochnCourses.Count == 0) {
+        <h3>Список курсов для планирования пуст!</h3>
     }
-    <h3>Дистанционные программы</h3>
-    foreach (var item in Model.distCourses) {
-        <h5>@item.Name</h5>
+    else {
+        <h3>Очные программы</h3>
+        foreach (var item in Model.ochnCourses) {
+            if (item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana) {
+                <div class="course_soglasovan">
+                    <h5 style="margin-top: -5px; margin-left: -5px; padding-left: 5px; background-color: #36A849; line-height: 40px;">@item.Name</h5>
+                    <h5 style="margin-top:-8px; margin-bottom: -10px; padding-left: 10px;">Согласовано руководителем: @item.DataSoglasovaniya.ToShortDateString()</h5>
+                    <h5 style="margin-bottom: -10px; padding-left: 10px;">Группа: @item.ChosenGroup.GroupName</h5>
+                    <h5 style="margin-bottom: -10px; padding-left: 10px;">Срок обучения: @item.ChosenGroup.DateStart.ToShortDateString() - @item.ChosenGroup.DateEnd.ToShortDateString() </h5>
+                    <h5 style="padding-left: 10px;margin-bottom: -10px; ">Площадка: <a href="">@item.ChosenGroup.Area</a></h5>
+                    <h5 style="padding-left: 10px;"><a href="">Удалить заявку</a></h5>
+                </div>
+            }
+            else if (item.Status == testProject.Models.ViewModels.Planning.Status.Otkazana) {
+                <div class="course_otkazan">
+                    <h5>@item.Name  - Дата отказа: @item.DataSoglasovaniya.ToShortDateString() <a href="">Изменить группу</a></h5>
+                </div>
+            }
+            else if (item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii) {
+                <div class="course_na_solgasovanii">
+                    <h5>@item.Name - <i>на согласовании </i><a href="">Удалить заявку</a></h5>
+                </div>
+            }
+            else {
+                <div class="course_wrapper">
+                    <h5>@item.Name <a href="">Выбрать группу</a></h5>
+                </div>
+                 }
+            }
+        <h3>Дистанционные программы</h3>
+        foreach (var item in Model.distCourses) {
+            <div class="course_wrapper">
+                <h5>@item.Name <a href="">Выбрать группу</a></h5>
+            </div>
+        }
     }
-}
+</div>
