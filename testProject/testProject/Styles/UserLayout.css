@@ -235,6 +235,11 @@ span.block_header {
     font-size: 18px;
 }
 
+span.block_header_strong {
+    font-size: 18px;
+    font-weight: 600;
+}
+
 table.learning {
     width: 860px;
     background-color:#f2f2f2;
