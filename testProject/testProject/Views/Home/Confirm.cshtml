@@ -1,6 +1,71 @@
-﻿@{
+﻿@model testProject.Models.ViewModels.Confirm.ConfirmModel
+@{
     ViewBag.Title = "Согласование заявок";
     Layout = "~/Views/Layouts/UserLayout.cshtml";
 }
 
 <h2>Согласование заявок на обучение</h2>
+
+<h3>Заявки на обучение</h3>
+@if (Model.Bids.Count > 0) {
+    <table>
+        <thead>
+            <th>№</th>
+            <th>ФИО</th>
+            <th>Курс</th>
+            <th>Площадка</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>Действия</th>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Bids.Count; i++) {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model.Bids[i].EmployeeFio</td>
+                    <td>@Model.Bids[i].Course</td>
+                    <td>@Model.Bids[i].Area</td>
+                    <td>@Model.Bids[i].LearningStart.ToShortDateString()</td>
+                    <td>@Model.Bids[i].LearningEnd.ToShortDateString()</td>
+                    <td>Действия</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} else {
+    <h4>Отсутствуют</h4>
+}
+
+<h3>Заявки на обучение (в листе ожидания)</h3>
+@if (Model.WaitingBids.Count > 0) {
+    <table>
+        <thead>
+            <th>№</th>
+            <th>ФИО</th>
+            <th>Курс</th>
+            <th>Площадка</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>Действия</th>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.WaitingBids.Count; i++) {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model.WaitingBids[i].EmployeeFio</td>
+                    <td>@Model.WaitingBids[i].Course</td>
+                    <td>@Model.WaitingBids[i].Area</td>
+                    <td>@Model.WaitingBids[i].LearningStart.ToShortDateString()</td>
+                    <td>@Model.WaitingBids[i].LearningEnd.ToShortDateString()</td>
+                    <td>Действия</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else {
+    <h4>Отсутствуют</h4>
+}
+
+
+<div id="vidget_placeholder">ПЛЕЙСХОЛДЕР ДЛЯ ВИДЖЕТА</div>

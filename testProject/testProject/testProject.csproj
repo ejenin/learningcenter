@@ -114,6 +114,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Misc\Globals.cs" />
+    <Compile Include="Models\ViewModels\Confirm\Bid.cs" />
+    <Compile Include="Models\ViewModels\Confirm\ConfirmModel.cs" />
     <Compile Include="Models\ViewModels\Feed\FeedModel.cs" />
     <Compile Include="Models\ViewModels\Feed\News.cs" />
     <Compile Include="Models\ViewModels\MyGroups\Group.cs" />

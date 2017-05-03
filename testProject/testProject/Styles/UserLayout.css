@@ -171,3 +171,24 @@ div.course_na_solgasovanii {
     line-height: 40px;
     padding-left: 10px;
 }
+
+table {
+    border-collapse: collapse;
+    border: 1px solid gray;
+}
+
+th, td {
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+div #vidget_placeholder {
+    width: 900px;
+    height: 300px;
+    background-color: purple;
+    margin-top: 15px;
+    color: white;
+    line-height: 300px;
+    font-size: 50px;
+    text-align: center;
+}

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using testProject.Misc;
 using testProject.Models.ViewModels;
+using testProject.Models.ViewModels.Confirm;
 using testProject.Models.ViewModels.MyGroups;
 using testProject.Models.ViewModels.Planning;
 
@@ -240,11 +241,67 @@ namespace testProject.Controllers {
 
             //туду: здесь - 
             //1) взять все заявки (по дате поступления)
+            /*
+             * У заявки есть - СОТРУДНИК, ДАТА ПОДАЧИ ЗАЯВКИ, КУРС, КОГДА ЧЕЛИК ХОЧЕТ УЧИТЬСЯ, ГДЕ ХОЧЕТ УЧИТЬСЯ, СТАТУС ЗАЯВКИ
+             */
             //2) ПАГИНАЦИЯ
             //3) тот самый компонент с визуальным отображением. Что? куча дивов? канвас? обычный битмап?
             //4) лист ожидания. Надо всё таки его блять сделать.
 
-            return View();
+            DateTime bidDate = new DateTime(2017, 03, 03);
+            DateTime LearningStart = new DateTime(2017, 03, 15);
+            DateTime LearningEnd = new DateTime(2017, 03, 20);
+
+            ConfirmModel model = new ConfirmModel();
+            model.Bids.Add(new Bid() {
+                Area = "г. Тобольск, ул. Мира, дом 9",
+                BidDate = bidDate,
+                Course = "Мастерство владения холодными звонками",
+                EmployeeFio = "Хорищенко Е.К.",
+                IsInWaitingList = false, 
+                LearningStart = LearningStart,
+                LearningEnd = LearningEnd,
+                Status = BidStatus.WaitingToConfirm
+            });
+
+            model.WaitingBids.Add(new Bid() {
+                Area = "г. Тобольск, ул. Мира, дом 9",
+                BidDate = bidDate,
+                Course = "Мастерство владения холодными звонками",
+                EmployeeFio = "Хорищенко Е.К.",
+                IsInWaitingList = true,
+                LearningStart = LearningStart,
+                LearningEnd = LearningEnd,
+                Status = BidStatus.Confirmed
+            });
+
+            model.Bids.Add(new Bid() {
+                Area = "г. Тобольск, ул. Мира, дом 9",
+                BidDate = bidDate,
+                Course = "Мастерство владения холодными звонками",
+                EmployeeFio = "Хорищенко Е.К.",
+                IsInWaitingList = false,
+                LearningStart = LearningStart,
+                LearningEnd = LearningEnd,
+                Status = BidStatus.Rejected
+            });
+
+            model.Bids.Add(new Bid() {
+                Area = "г. Тобольск, ул. Мира, дом 9",
+                BidDate = bidDate,
+                Course = "Мастерство владения холодными звонками",
+                EmployeeFio = "Хорищенко Е.К.",
+                IsInWaitingList = false,
+                LearningStart = LearningStart,
+                LearningEnd = LearningEnd,
+                Status = BidStatus.SwappedByHands
+            });
+
+
+            model.Bids = model.Bids.OrderByDescending(b => b.Status).ToList();
+            model.WaitingBids = model.WaitingBids.OrderByDescending(b => b.Status).ToList();
+
+            return View(model);
         }
 
     }
