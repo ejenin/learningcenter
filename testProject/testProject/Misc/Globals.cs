@@ -13,6 +13,6 @@ namespace testProject {
 
 namespace testProject.Misc {
     public static class Globals {
-        public static Mode CurrentMode = Mode.BOSS;
+        public static Mode CurrentMode = Mode.ADMINISTRATOR;
     }
 }

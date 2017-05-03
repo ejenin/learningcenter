@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testProject.Misc;
 
 namespace testProject.Controllers {
     public class DefaultController : Controller {
@@ -19,7 +20,12 @@ namespace testProject.Controllers {
             if (login == "admin" && password == "admin") {
                 //todo: redirect to feed controller DONE
                 //todo: set user information somewhere
-                return RedirectPermanent("home/feed");
+                if (Globals.CurrentMode != Mode.ADMINISTRATOR) {
+                    return RedirectPermanent("home/feed");
+                }
+                else {
+                    return RedirectPermanent("/administration/index");
+                }
                 //return null;
             }
             else {

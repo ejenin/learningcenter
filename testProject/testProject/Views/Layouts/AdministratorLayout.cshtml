@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Styles/AdministratorLayout.css" />
+</head>
+<body>
+    <div class="panel">
+        Вошли как: Хорищенко Е.К.<br /><a href="">Выход</a>
+        <!--TODO: мб марджин сюда заебенить на пикселей 100?-->
+        <ul>
+            <li>Справочники
+                <ul>
+                    <li>Справочник 1</li>
+                    <li>Справочник 2</li>
+                    <li>Справочник 3</li>
+                    <li>Справочник 4</li>
+                </ul>
+            </li>
+            <li>Загрузка данных</li>
+            <li>Панель администрирования(?)</li>
+            <li>Отчёты</li>
+        </ul>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
