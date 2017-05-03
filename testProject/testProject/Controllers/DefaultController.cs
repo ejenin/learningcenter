@@ -21,7 +21,7 @@ namespace testProject.Controllers {
                 //todo: redirect to feed controller DONE
                 //todo: set user information somewhere
                 if (Globals.CurrentMode != Mode.ADMINISTRATOR) {
-                    return RedirectPermanent("home/feed");
+                    return RedirectPermanent("/home/feed");
                 }
                 else {
                     return RedirectPermanent("/administration/index");

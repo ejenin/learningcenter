@@ -109,12 +109,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Misc\DbMess.cs" />
     <Compile Include="Misc\Globals.cs" />
+    <Compile Include="Models\ViewModels\Catalogs\AreasModel.cs" />
+    <Compile Include="Models\ViewModels\Catalogs\Shared\Area.cs" />
     <Compile Include="Models\ViewModels\Confirm\Bid.cs" />
     <Compile Include="Models\ViewModels\Confirm\ConfirmModel.cs" />
     <Compile Include="Models\ViewModels\Feed\FeedModel.cs" />
@@ -132,6 +136,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App_Data\ToDo.txt" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Styles\AdministratorLayout.css" />
     <Content Include="Styles\autorization.css" />
     <Content Include="Styles\UserLayout.css" />
@@ -143,6 +152,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Confirm.cshtml" />
@@ -170,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Administration\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Catalog\Areas.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
