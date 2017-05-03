@@ -13,7 +13,7 @@ namespace testProject {
 
 namespace testProject.Misc {
     public static class Globals {
-        public static Mode CurrentMode = Mode.ADMINISTRATOR;
+        public static Mode CurrentMode = Mode.BOSS;
         
         public static bool StringIsEmpty(string val) {
             return String.IsNullOrEmpty(val) || String.IsNullOrWhiteSpace(val);

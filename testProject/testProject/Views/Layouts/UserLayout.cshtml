@@ -7,44 +7,46 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="header">
-        <a href="/home/feed" class="menu_link">
-            <div class="navigation_button">
-                Уведомления
-            </div>
-        </a>
-
-        <a href="/home/mylearning" class="menu_link">
-            <div class="navigation_button">
-                Обучение
-            </div>
-        </a>
-
-        <a href="/home/planning" class="menu_link">
-            <div class="navigation_button">
-                Планирование
-            </div>
-        </a>
-
-        @if (testProject.Misc.Globals.CurrentMode == testProject.Mode.BOSS) {
-            <a href="/home/confirm" class="menu_link">
-                <div class="navigation_button">
-                    Согласование
+    <div class="page">
+        <div class="header">
+            <a href="/home/mylearning" class="menu_link">
+                <div class="@(ViewBag.Title=="Обучение" ? "navigation_button_selected" : "navigation_button")">
+                    Обучение
                 </div>
             </a>
-        }
 
-        <div class="navigation_button">
-            Настройки
+            <a href="/home/planning" class="menu_link">
+                <div class="@(ViewBag.Title=="Планирование" ? "navigation_button_selected" : "navigation_button")">
+                    Планирование
+                </div>
+            </a>
+
+            @if (testProject.Misc.Globals.CurrentMode == testProject.Mode.BOSS) {
+                <a href="/home/confirm" class="menu_link">
+                    <div class="@(ViewBag.Title=="Согласование" ? "navigation_button_selected" : "navigation_button")">
+                        Согласование
+                    </div>
+                </a>
+            }
+            
+            <a href="/home/feed" class="menu_link">
+                <div class="@(ViewBag.Title=="Уведомления" ? "navigation_button_selected" : "navigation_button")">
+                    Уведомления
+                </div>
+            </a>
+
+            <div class="@(ViewBag.Title=="Настройки" ? "navigation_button_selected" : "navigation_button")">
+                Настройки
+            </div>
+
+            <div class="navigation_button" style="float: right;">
+                Выход
+            </div>
         </div>
 
-        <div class="navigation_button" style="float: right;">
-            Выход
+        <div>
+            @RenderBody()
         </div>
-    </div>
-
-    <div>
-        @RenderBody()
     </div>
 </body>
 </html>

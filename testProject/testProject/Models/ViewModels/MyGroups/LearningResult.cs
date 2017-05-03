@@ -10,7 +10,8 @@ namespace testProject.Models.ViewModels.MyGroups {
         public string Mark { get; set; }
 
         public string getClass() {
-            return "group_" + (IsSuccess ? "done" : "failed");
+            //return "group_" + (IsSuccess ? "done" : "failed");
+            return IsSuccess ? "success" : "not_success";
         }
     }
 }

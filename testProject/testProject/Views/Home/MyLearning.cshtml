@@ -4,42 +4,133 @@
     Layout = "~/Views/Layouts/UserLayout.cshtml";
 }
 
-<h2>Моё обучение</h2>
+@*<h2>Моё обучение</h2>*@
 
-<h3>Текущее обучение</h3>
-@foreach (var item in Model.actualGroups) {
-    <div class="group">Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
-        <div class="hidden_block">
-            Преподаватель: <a href="">@item.Lecturer</a><br />
-            Площадка: <a href="">@item.Area</a>
-        </div>
-    </div>
-    
-    <br />
-}
+<div class="page_block">
+    <span class="block_header">Текущее обучение</span>
+    @if (Model.actualGroups.Count > 0) {
+        <table class="learning">
+            <thead>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+                <th>Номер группы</th>
+                <th>Курс</th>
+                <th>Преподаватель</th>
+                <th>Площадка</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.actualGroups) {
+                    <tr>
+                        <td>@item.DateStart.ToShortDateString()</td>
+                        <td>@item.DateEnd.ToShortDateString()</td>
+                        <td>@item.GroupName</td>
+                        <td>@item.Course</td>
+                        <td>@item.Lecturer</td>
+                        <td>@item.Area</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else {
+        <span class="block_header"> - Нет информации</span>
+    }
 
-<h3>Предстоящее обучение</h3>
-@foreach (var item in Model.futureGroups) {
-    <div class="group">Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
-        <div class="hidden_block">
-            Преподаватель: <a href="">@item.Lecturer</a><br />
-            Площадка: <a href="">@item.Area</a>
+    @*@foreach (var item in Model.actualGroups) {
+        <div class="group">
+            Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
+            <div class="hidden_block">
+                Преподаватель: <a href="">@item.Lecturer</a><br />
+                Площадка: <a href="">@item.Area</a>
+            </div>
         </div>
-    </div>
-    <br />
-}
+    }*@
+</div>
 
-<h3>Прошедшее обучение</h3>
-@foreach (var item in Model.passedGroups) {
-    <div class="@item.getClass()">Группа: @item.Group.GroupName (@item.Group.Course) <div class="news_time">@item.Group.DateStart.ToShortDateString()-@item.Group.DateEnd.ToShortDateString()</div>
-        <div class="hidden_block">
-            Преподаватель: <a href="">@item.Group.Lecturer</a><br />
-            Площадка: <a href="">@item.Group.Area</a><br />
-            Оценка: @item.Mark
+<div class="page_block">
+    <span class="block_header">Предстоящее обучение</span>
+    @if (Model.futureGroups.Count > 0) {
+        <table class="learning">
+            <thead>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>Номер группы</th>
+            <th>Курс</th>
+            <th>Преподаватель</th>
+            <th>Площадка</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.futureGroups) {
+                    <tr>
+                        <td>@item.DateStart.ToShortDateString()</td>
+                        <td>@item.DateEnd.ToShortDateString()</td>
+                        <td>@item.GroupName</td>
+                        <td>@item.Course</td>
+                        <td>@item.Lecturer</td>
+                        <td>@item.Area</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else {
+        <span class="block_header"> - Нет информации</span>
+    }
+
+    @*@foreach (var item in Model.futureGroups) {
+        <div class="group">
+            Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
+            <div class="hidden_block">
+                Преподаватель: <a href="">@item.Lecturer</a><br />
+                Площадка: <a href="">@item.Area</a>
+            </div>
         </div>
-    </div>
-    <br />
-}
+    }*@
+</div>
+
+<div class="page_block">
+    <span class="block_header">История обучения</span>
+    @if (Model.passedGroups.Count > 0) {
+        <table class="learning">
+            <thead>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>Оценка</th>
+            <th>Номер группы</th>
+            <th>Курс</th>
+            <th>Преподаватель</th>
+            <th>Площадка</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.passedGroups) {
+                    <tr class="@item.getClass()">
+                        <td>@item.Group.DateStart.ToShortDateString()</td>
+                        <td>@item.Group.DateEnd.ToShortDateString()</td>
+                        <td>@item.Mark</td>
+                        <td>@item.Group.GroupName</td>
+                        <td>@item.Group.Course</td>
+                        <td>@item.Group.Lecturer</td>
+                        <td>@item.Group.Area</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else {
+        <span class="block_header"> - Нет информации</span>
+    }
+    @*@foreach (var item in Model.passedGroups) {
+        <div class="@item.getClass()">
+            Группа: @item.Group.GroupName (@item.Group.Course) <div class="news_time">@item.Group.DateStart.ToShortDateString()-@item.Group.DateEnd.ToShortDateString()</div>
+            <div class="hidden_block">
+                Преподаватель: <a href="">@item.Group.Lecturer</a><br />
+                Площадка: <a href="">@item.Group.Area</a><br />
+                Оценка: @item.Mark
+            </div>
+        </div>
+    }*@
+</div>
+
 <!--TODO: подгружать конкретно это обучение аяксом? Ибо 
     эта секция будет засоряться как шваль, и можно наму-
     тить пагинацию со всеми прилегающими крутыми вещами-->
