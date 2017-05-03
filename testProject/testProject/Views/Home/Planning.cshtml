@@ -4,48 +4,78 @@
     Layout = "~/Views/Layouts/UserLayout.cshtml";
 }
 
-<h2>Планирование обучения</h2>
+@*<h2>Планирование обучения</h2>*@
 
-<h3 style="margin-left: 10px">Ваш согласующий руководитель: @Model.BossFio</h3>
-
-<div class="wrapper">
+<div class="page_block">
+    <h3 style="">Ваш согласующий руководитель: @Model.BossFio</h3>
+</div>
+<div class="page_block">
     @if (Model.distCourses.Count == 0 && Model.ochnCourses.Count == 0) {
-        <h3>Список курсов для планирования пуст!</h3>
+        <span class="block_header"> Список курсов для планирования пуст!</span>
     }
     else {
-        <h3>Очные программы</h3>
-        foreach (var item in Model.ochnCourses) {
-            if (item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana) {
-                <div class="course_soglasovan">
-                    <h5 style="margin-top: -5px; margin-left: -5px; padding-left: 5px; background-color: #36A849; line-height: 40px;">@item.Name</h5>
-                    <h5 style="margin-top:-8px; margin-bottom: -10px; padding-left: 10px;">Согласовано руководителем: @item.DataSoglasovaniya.ToShortDateString()</h5>
-                    <h5 style="margin-bottom: -10px; padding-left: 10px;">Группа: @item.ChosenGroup.GroupName</h5>
-                    <h5 style="margin-bottom: -10px; padding-left: 10px;">Срок обучения: @item.ChosenGroup.DateStart.ToShortDateString() - @item.ChosenGroup.DateEnd.ToShortDateString() </h5>
-                    <h5 style="padding-left: 10px;margin-bottom: -10px; ">Площадка: <a href="">@item.ChosenGroup.Area</a></h5>
-                    <h5 style="padding-left: 10px;"><a href="">Удалить заявку</a></h5>
-                </div>
-            }
-            else if (item.Status == testProject.Models.ViewModels.Planning.Status.Otkazana) {
-                <div class="course_otkazan">
-                    <h5>@item.Name  - Дата отказа: @item.DataSoglasovaniya.ToShortDateString() <a href="">Изменить группу</a></h5>
-                </div>
-            }
-            else if (item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii) {
-                <div class="course_na_solgasovanii">
-                    <h5>@item.Name - <i>на согласовании </i><a href="">Удалить заявку</a></h5>
-                </div>
-            }
-            else {
-                <div class="course_wrapper">
-                    <h5>@item.Name <a href="">Выбрать группу</a></h5>
-                </div>
-                 }
-            }
-        <h3>Дистанционные программы</h3>
-        foreach (var item in Model.distCourses) {
-            <div class="course_wrapper">
-                <h5>@item.Name <a href="">Выбрать группу</a></h5>
-            </div>
-        }
+        <span class="block_header">Очные программы</span>
+        <table class="learning">
+            <thead>
+                <th>Курс</th>
+                <th>Дата последнего изменения заявки</th>
+                <th>Дата начала обучения</th>
+                <th>Дата окончания обучения</th>
+                <th>Площадка</th>
+                <th>Преподаватель</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ochnCourses) {
+                    <tr class="@(item.getClass())">
+                        <td>@item.Name</td>
+                        <td>@(item.DateChange.HasValue ? item.DateChange.Value.ToShortDateString() : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.DateStart.ToShortDateString() : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.DateEnd.ToShortDateString() : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.Area : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.Lecturer : "-")</td>
+                        <td>@item.GetStatus()</td>
+                        <td>?????</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+
+<div class="page_block">
+    @if (Model.distCourses.Count == 0 && Model.ochnCourses.Count == 0) {
+        <span class="block_header"> Список курсов для планирования пуст!</span>
+    }
+    else {
+        <span class="block_header">Дистанционные программы</span>
+        <table class="learning">
+            <thead>
+            <th>Курс</th>
+            <th>Дата последнего изменения заявки</th>
+            <th>Дата начала обучения</th>
+            <th>Дата окончания обучения</th>
+            <th>Площадка</th>
+            <th>Преподаватель</th>
+            <th>Статус</th>
+            <th>Действия</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.distCourses) {
+                    <tr class="@(item.getClass())">
+                        <td>@item.Name</td>
+                        <td>@(item.DateChange.HasValue ? item.DateChange.Value.ToShortDateString() : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.DateStart.ToShortDateString() : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.DateEnd.ToShortDateString() : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.Area : "-")</td>
+                        <td>@(item.ChosenGroup != null ? item.ChosenGroup.Lecturer : "-")</td>
+                        <td>@item.GetStatus()</td>
+                        <td>?????</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     }
 </div>

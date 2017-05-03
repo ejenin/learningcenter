@@ -175,14 +175,16 @@ namespace testProject.Controllers {
                 Id = 1,
                 Name = "Мастерство владения холодными звонками (уровень 2)",
                 IsRemote = false,
-                Status = Status.None
+                Status = Status.None,
+                DateChange = null
             });
 
             model.ochnCourses.Add(new LearningCourse() {
                 Id = 2,
                 Name = "Мастерство владения холодными (уровень 1)",
                 IsRemote = false,
-                Status = Status.NaSoglasovanii
+                Status = Status.NaSoglasovanii,
+                DateChange = new DateTime(2017, 04, 13)
             });
 
             model.ochnCourses.Add(new LearningCourse() {
@@ -190,7 +192,7 @@ namespace testProject.Controllers {
                 Name = "Курсы по EXCEL 2010",
                 IsRemote = false,
                 Status = Status.Otkazana,
-                DataSoglasovaniya = new DateTime(2017, 03, 30)
+                DateChange = new DateTime(2017, 03, 30)
             });
 
             model.ochnCourses.Add(new LearningCourse() {
@@ -205,7 +207,7 @@ namespace testProject.Controllers {
                     GroupName = "17-67-2099",
                     Lecturer = "Иванов Е.С."
                 },
-                DataSoglasovaniya = new DateTime(2017,04,13)
+                DateChange = new DateTime(2017, 04, 13)
             });
 
             model.distCourses.Add(new LearningCourse() {

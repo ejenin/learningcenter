@@ -205,7 +205,7 @@ th, td {
 }
 
 div #vidget_placeholder {
-    width: 900px;
+    width: 860px;
     height: 300px;
     background-color: purple;
     margin-top: 15px;
@@ -263,4 +263,12 @@ tr.success {
 
 tr.not_success {
     background-color: #f3d5da;
+}
+
+.learning tr:hover {
+    background-color: lightgray;
+}
+
+.info_row {
+    background-color: #cbdce1;
 }

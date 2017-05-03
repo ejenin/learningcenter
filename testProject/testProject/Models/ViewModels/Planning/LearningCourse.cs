@@ -24,7 +24,7 @@ namespace testProject.Models.ViewModels.Planning {
         public List<Group> LearningGroups;
 
         public Group ChosenGroup { get; set; }
-        public DateTime DataSoglasovaniya { get; set; }
+        public DateTime? DateChange { get; set; }
 
         public LearningCourse() {
             LearningGroups = new List<Group>();
@@ -59,6 +59,17 @@ namespace testProject.Models.ViewModels.Planning {
                     return "Изменено руководителем";
             }
             return "-";
+        }
+
+        public string getClass() {
+            switch (Status) {
+                case Planning.Status.Soglasovana: return "success";
+                case Planning.Status.Otkazana: return "not_success";
+                case Planning.Status.None: return "";
+                case Planning.Status.NaSoglasovanii: return "info_row";
+                case Planning.Status.IzmenenoRukovoditelem: return "info_row";
+                default: return "";
+            }
         }
     }
 }
