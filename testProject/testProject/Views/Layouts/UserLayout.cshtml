@@ -26,6 +26,14 @@
             </div>
         </a>
 
+        @if (testProject.Misc.Globals.CurrentMode == testProject.Mode.BOSS) {
+            <a href="/home/confirm" class="menu_link">
+                <div class="navigation_button">
+                    Согласование
+                </div>
+            </a>
+        }
+
         <div class="navigation_button">
             Настройки
         </div>

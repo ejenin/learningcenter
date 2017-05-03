@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testProject.Misc;
 using testProject.Models.ViewModels;
 using testProject.Models.ViewModels.MyGroups;
 using testProject.Models.ViewModels.Planning;
@@ -230,6 +231,20 @@ namespace testProject.Controllers {
             model.ochnCourses = model.ochnCourses.OrderBy(o => o.Status).ToList();
 
             return View(model);
+        }
+
+        public ActionResult Confirm() {
+            if (Globals.CurrentMode != Mode.BOSS) {
+                return Redirect("/home/feed");
+            }
+
+            //туду: здесь - 
+            //1) взять все заявки (по дате поступления)
+            //2) ПАГИНАЦИЯ
+            //3) тот самый компонент с визуальным отображением. Что? куча дивов? канвас? обычный битмап?
+            //4) лист ожидания. Надо всё таки его блять сделать.
+
+            return View();
         }
 
     }
