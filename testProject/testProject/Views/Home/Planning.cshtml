@@ -6,6 +6,61 @@
 
 @*<h2>Планирование обучения</h2>*@
 
+
+<div class="holder">
+    <div class="page_block">
+        <span class="block_header">Мастерство владения холодными звонками (уровень 2)</span><br />
+        <span class="block_header">Выберите группу</span>
+        <table class="learning">
+            <thead>
+                <th>Группа</th>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+                <th>Преподаватель</th>
+                <th>Площадка</th>
+                <th>Действия</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>17-67-2030</td>
+                    <td>12.04.2017</td>
+                    <td>20.04.2017</td>
+                    <td>Петров С.Е.</td>
+                    <td>г. Тобольск, улица Ремезова, 19 Б</td>
+                    <td>Оставить заявку</td>
+                </tr>
+                <tr>
+                    <td>17-67-2031</td>
+                    <td>20.05.2017</td>
+                    <td>28.05.2017</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Оставить заявку</td>
+                </tr>
+                <tr title="Пересечение с группой 17-67-2037 (21.05.2017 - 26.05.2017), заявка пойдёт в лист ожидания">
+                    <td>17-67-2031</td>
+                    <td>20.05.2017</td>
+                    <td>28.05.2017</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Оставить заявку</td>
+                </tr>
+                <tr title="Квоты отстутсвуют, заявка пойдёт в лист ожидания">
+                    <td>17-67-2032</td>
+                    <td>01.06.2017</td>
+                    <td>08.05.2017</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Оставить заявку</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button_panel_wrapper_right">
+            <button class="negative" style="">Отмена</button>
+        </div>
+    </div>
+</div>
+
 <div class="page_block">
     <span class="block_header_strong">Ваш согласующий руководитель: @Model.BossFio </span>
 </div>
@@ -36,7 +91,12 @@
                         <td>@(item.ChosenGroup != null ? item.ChosenGroup.Area : "-")</td>
                         <td>@(item.ChosenGroup != null ? item.ChosenGroup.Lecturer : "-")</td>
                         <td>@item.GetStatus()</td>
-                        <td>?????</td>
+                        @if (item.Status == testProject.Models.ViewModels.Planning.Status.None || item.Status == testProject.Models.ViewModels.Planning.Status.Otkazana) {
+                            <td>Выбрать группу</td>
+                        }
+                        else if (item.Status == testProject.Models.ViewModels.Planning.Status.IzmenenoRukovoditelem || item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii || item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana) {
+                            <td>Отменить заявку</td>
+                        }
                     </tr>
                 }
             </tbody>
@@ -53,14 +113,14 @@
         <span class="block_header">Дистанционные программы</span>
         <table class="learning">
             <thead>
-            <th>Курс</th>
-            <th>Дата последнего изменения заявки</th>
-            <th>Дата начала обучения</th>
-            <th>Дата окончания обучения</th>
-            <th>Площадка</th>
-            <th>Преподаватель</th>
-            <th>Статус</th>
-            <th>Действия</th>
+                <th>Курс</th>
+                <th>Дата последнего изменения заявки</th>
+                <th>Дата начала обучения</th>
+                <th>Дата окончания обучения</th>
+                <th>Площадка</th>
+                <th>Преподаватель</th>
+                <th>Статус</th>
+                <th>Действия</th>
             </thead>
             <tbody>
                 @foreach (var item in Model.distCourses) {
@@ -72,7 +132,12 @@
                         <td>@(item.ChosenGroup != null ? item.ChosenGroup.Area : "-")</td>
                         <td>@(item.ChosenGroup != null ? item.ChosenGroup.Lecturer : "-")</td>
                         <td>@item.GetStatus()</td>
-                        <td>?????</td>
+                        @if (item.Status == testProject.Models.ViewModels.Planning.Status.None || item.Status == testProject.Models.ViewModels.Planning.Status.Otkazana) {
+                            <td>Выбрать группу</td>
+                        }
+                        else if (item.Status == testProject.Models.ViewModels.Planning.Status.IzmenenoRukovoditelem || item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii || item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana) {
+                            <td>Отменить заявку</td>
+                        }
                     </tr>
                 }
             </tbody>

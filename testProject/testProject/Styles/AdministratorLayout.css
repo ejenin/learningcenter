@@ -1,38 +1,13 @@
 ﻿body {
     margin: 0px;
-    font-family: Arial;
-    background-color:lightyellow;
-    height: 100%;
-    overflow: hidden;
-}
-
-div.panel {
-    height: 4000px;
-    width: 300px;
-    background-color: #1f1f1f;
-    position: relative;
-    float: left;
-    margin-top: -20px;
-    color: white;
-}
-
-.panel ul {
-    list-style-type: georgian;
-}
-
-.panel a {
-    color: white;
+    font-family: 'Open Sans';
+    background-color: #f2f2f2;
 }
 
 a.disabled {
     font-style: italic;
     color: gray;
     text-decoration: none;
-}
-
-h2.catalog_header {
-    border-bottom: 1px solid gray;
-    margin-left: 15px;
 }
 
 div.area_popup {
@@ -75,11 +50,91 @@ button.btn_not_success {
     box-shadow: rgba(0,0,0,0.4) 2px 2px;
 }
 
-table.catalog {
-    border-collapse: collapse;
-    margin-left: 315px;
+.page {
+    /*background-color: lightgreen;*/
+    width: 100%;
 }
 
-.catalog td {
-    border: 1px solid gray;
+div.left_panel {
+    /*background-color: pink;*/
+    width: 250px;
+    position: absolute;
+    height: 100%;
+}
+
+div.right_panel {
+    /*background-color: yellow;*/
+    padding-left: 250px;
+}
+
+div.logo_placeholder {
+    background-color: lightgreen;
+    width: 200px;
+    height: 80px;
+    margin-left: 23px;
+    line-height: 80px;
+    text-align: center;
+}
+
+div.page_block {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+span.block_header {
+    font-size: 18px;
+}
+
+span.block_header_strong {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+div.block_header_inner {
+    border-bottom: 1px solid black;
+    /*background-color: pink;*/
+    font-size: 20px;
+}
+
+
+table.learning {
+    /*width: 860px;*/
+    width: 100%;
+    /*background-color:#f2f2f2;*/
+    background-color: white;
+    border: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin-top: 14px;
+}
+
+.learning th {
+    border: 0px;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    font-size: 14px;
+}
+
+.learning td {
+    border: 0px;
+    border-right: 1px solid lightgray;
+    font-size: 14px;
+}
+
+tr.success {
+    background-color: #c5f1c5;
+}
+
+tr.not_success {
+    background-color: #f3d5da;
+}
+
+.learning tr:hover {
+    background-color: lightgray;
+}
+
+.info_row {
+    background-color: #cbdce1;
 }

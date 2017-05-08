@@ -246,7 +246,6 @@ table.learning {
     border: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     margin-top: 14px;
-
 }
 
 .learning th {
@@ -276,4 +275,47 @@ tr.not_success {
 
 .info_row {
     background-color: #cbdce1;
+}
+
+div.holder {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    padding-top: 100px;
+}
+
+div.holder .page_block {
+    width: 860px;
+    margin: 0px auto;
+}
+
+div.holder .page_block td {
+    font-size: 13px;
+}
+
+button.negative {
+    padding: 8px 8px 6px 8px;
+    border-radius: 7px;
+    background-color: white;
+    border-color: #d64540;
+    color: #d64540;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.1s;
+}
+
+button.negative:hover {
+    cursor: pointer;
+    background-color: #d9534f;
+    color: white;
+}
+
+div.button_panel_wrapper_right {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: -10px;
 }
