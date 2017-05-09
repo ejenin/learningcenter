@@ -9,8 +9,8 @@ using testProject.Models.ViewModels.Catalogs.Shared;
 
 namespace testProject.Controllers
 {
-    public class CatalogController : Controller
-    {
+    public class CatalogController : Controller {
+        #region AREAS
         [HttpGet, ActionName("areas")]
         public ActionResult Areas(int? page) {
 
@@ -20,10 +20,6 @@ namespace testProject.Controllers
 
         [HttpPost, ActionName("saveArea")]
         public void SaveArea(string Id, string Address, string Comment) {
-            //string comm = Globals.StringIsEmpty(area.Comment) ? "NULL" : area.Comment;
-            //string query = "INESRT INTO Areas VALUES('" + area.Address + "'," + comm + ", 0)";
-            //DbMess.DoAction(query);
-
             string comm = Globals.StringIsEmpty(Comment) ? "NULL" : "'" + Comment + "'";
             string query = "UPDATE Areas SET Address='" + Address + "', Comment=" + comm + " WHERE IdArea=" + Id;
             DbMess.DoAction(query);
@@ -31,9 +27,11 @@ namespace testProject.Controllers
 
         [HttpPost, ActionName("addArea")]
         public void AddArea(string Id, string Address, string Comment) {
-            string comm = Globals.StringIsEmpty(Comment) ? "NULL" : "'" + Comment + "'";
-            string query = "INSERT INTO Areas VALUES('" + Address + "'," + comm + ", 0)";
-            DbMess.DoAction(query);
+            if (!Globals.StringIsEmpty(Address)) {
+                string comm = Globals.StringIsEmpty(Comment) ? "NULL" : "'" + Comment + "'";
+                string query = "INSERT INTO Areas VALUES('" + Address + "'," + comm + ", 0)";
+                DbMess.DoAction(query);
+            }
         }
 
         [HttpPost, ActionName("deleteArea")]
@@ -41,5 +39,52 @@ namespace testProject.Controllers
             string query = "UPDATE Areas SET IsDeleted=1 WHERE IdArea=" + Id;
             DbMess.DoAction(query);
         }
+        #endregion
+
+        #region COURSES
+        [HttpGet, ActionName("courses")]
+        public ActionResult Courses(int? page) {
+            CoursesModel model = new CoursesModel();
+            return View(model);
+        }
+
+        [HttpPost, ActionName("saveCourse")]
+        public void SaveCouse(string Id, string Name, bool IsRemote, string Length, string Type) {
+
+            double finalLength = 0;
+            string length = "";
+            if (double.TryParse(Length, out finalLength)) {
+                length = finalLength.ToString();
+            }
+            else {
+                length = "NULL";
+            }
+
+            string query = "UPDATE Courses SET Name='" + Name + "', IsRemote=" + Convert.ToInt32(IsRemote) + ", LengthInHours=" + length + ", ResultType=" + Type + " WHERE IdCourse=" + Id;
+            DbMess.DoAction(query);
+        }
+
+        [HttpPost, ActionName("addCourse")]
+        public void addCouse(string Id, string Name, bool IsRemote, string Length, string Type) {
+
+            double finalLength = 0;
+            string length = "";
+            if (double.TryParse(Length, out finalLength)) {
+                length = finalLength.ToString();
+            }
+            else {
+                length = "NULL";
+            }
+
+            string query = "INSERT INTO Courses VALUES('" + Name + "', " + Convert.ToInt32(IsRemote) + ", " + length + ", " + Type + ", 0)";
+            DbMess.DoAction(query);
+        }
+
+        [HttpPost, ActionName("deleteCourse")]
+        public void DeleteCourse(string Id) {
+            string query = "UPDATE Courses SET IsDeleted=1 WHERE IdCourse=" + Id;
+            DbMess.DoAction(query);
+        }
+        #endregion
     }
 }

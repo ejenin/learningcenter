@@ -1,0 +1,135 @@
+﻿@model testProject.Models.ViewModels.Catalogs.AreasModel
+@{
+    ViewBag.Title = "Площадки";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+@*<div class="page_block">
+    <span class="block_header">Площадки</span>
+</div>*@
+@*<h2 class="catalog_header">Площадки</h2>*@
+
+@*<button class="btn_success" onclick="Add();">Добавить</button>*@
+
+<div class="holder">
+    <div class="page_block">
+        <span class="block_header_strong">
+            Редактирование площадки
+        </span><br />
+
+        <input type="hidden" name="Id" value="s" />
+
+        Адрес <br />
+        <input type="text" name="Address" style="width:860px;"/><br />
+
+        Комментарий<br />
+        <textarea name="Comment" style="width: 860px;"></textarea>
+
+        <div class="button_panel_wrapper_right">
+            <button class="neutral" onclick="Cancel();">
+                Отмена
+            </button>
+            <button class="positive_green" onclick="Save();">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="page_block">
+    <div class="block_header_inner">
+        Площадки
+    </div>
+    <div class="block_command_panel">
+        <button class="positive_green" style="float: right;" onclick="Add();">Добавить</button>
+    </div>
+    <table class="learning">
+        <thead>
+            <th>ID</th>
+            <th>Адрес</th>
+            <th>Комментарий</th>
+            <th>Действие</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Areas) {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Address</td>
+                    <td>@item.Comment</td>
+                    <td><span onclick="Edit(@item.Id);">Редактировать</span> <br /><span onclick="Delete(@item.Id)">Удалить</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function Add() {
+        $("[name=Id]").val("s");
+
+        $("[name=Address]").val("");
+        $("[name=Comment]").val("");
+
+        $(".block_header_strong").text("Добавление площадки");
+
+        $(".holder").show();
+    }
+
+    function Edit(id) {
+        $(".holder").show();
+        $("[name=Id]").val(id);
+        //$(".area_popup").show(200);
+
+        $(".block_header_strong").text("Редактирование площадки");
+
+        var table = document.getElementsByClassName("learning")[0];
+        
+        for (var i = 1; i < table.rows.length; i++) {
+            if (table.rows[i].cells[0].innerText == id) {
+                $("[name=Address]").val(table.rows[i].cells[1].innerText);
+                $("[name=Comment]").val(table.rows[i].cells[2].innerText);
+                return;
+            }
+        }
+    }
+
+    function Save() {
+        //todo: валидация
+        var id = $("[name=Id]").val();
+        var addr = $("[name=Address]").val(); // != null
+        var comm = $("[name=Comment]").val();
+        
+        var url = "SaveArea";
+
+        if (isNaN(id)) {
+            url = "AddArea";
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/catalog/' + url,
+            data: {Id: id, Address: addr, Comment: comm },
+            success: function() {
+                document.location.href='/catalog/areas';
+            }
+        });
+    }
+
+    function Cancel() {
+        $(".holder").hide();
+        $("[name=Id]").val("s");
+    }
+
+    function Delete(id) {
+        if(confirm('Вы уверены что хотите удалить эту площадку?')) {
+            $.ajax({
+                type: 'POST',
+                url: '/catalog/deleteArea',
+                data: {Id: id },
+                success: function() {
+                    document.location.href='/catalog/areas';
+                }
+            });
+        }
+    }
+</script>

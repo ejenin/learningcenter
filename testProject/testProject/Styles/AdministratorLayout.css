@@ -10,44 +10,8 @@ a.disabled {
     text-decoration: none;
 }
 
-div.area_popup {
-    width: 600px;
-    height: 300px;
-    border: 1px solid black;
-    margin-left: 450px;
-    border-radius: 15px;
-    box-shadow: rgba(0,0,0,0.4) 5px 5px;
-    padding: 10px;
-
-    display: none;
-}
-
-div.area_popup input[type=text] {
-    width: 580px;
-}
-
-div.area_popup textarea {
-    width: 580px;
-    height: 170px;
-}
-
-button.btn_success {
-    width: 120px;
-    height: 50px;
-    background: linear-gradient(to top, #018300, #a3eb9d);
-    color: white;
-    border-radius: 7px;
-    box-shadow: rgba(0,0,0,0.4) 2px 2px;
-    margin-top: 7px;
-}
-
-button.btn_not_success {
-    width: 120px;
-    height: 50px;
-    background: linear-gradient(to top, #de1212, #f3a1a1);
-    color: white;
-    border-radius: 7px;
-    box-shadow: rgba(0,0,0,0.4) 2px 2px;
+ul {
+    list-style-type: none;
 }
 
 .page {
@@ -68,7 +32,8 @@ div.right_panel {
 }
 
 div.logo_placeholder {
-    background-color: lightgreen;
+    /*background-color: lightgreen;*/
+    border: 1px solid black;
     width: 200px;
     height: 80px;
     margin-left: 23px;
@@ -211,6 +176,8 @@ button.positive_green {
     color: white;
     font-size: 14px;
     transition: 0.1s;
+
+    /*font-family: roboto;*/
 }
 
 button.positive_green:hover {
@@ -234,4 +201,8 @@ button.neutral:hover {
     cursor: pointer;
     background-color: gray;
     color: white;
+}
+
+input, textarea {
+    font-family: 'Open Sans';
 }

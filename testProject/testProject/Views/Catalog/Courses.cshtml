@@ -1,0 +1,171 @@
+﻿@model testProject.Models.ViewModels.Catalogs.CoursesModel
+@{
+    ViewBag.Title = "Курсы";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+<div class="holder">
+    <div class="page_block">
+        <span class="block_header_strong">
+            Редактирование курса
+        </span><br />
+
+        <input type="hidden" name="Id" value="s" />
+
+        Название <br />
+        <input type="text" name="Name" style="width:860px;" /><br /><br />
+
+        Форма прохождения<br />
+        <input type="radio" id="ochn" name="form"/>Очная <br />
+        <input type="radio" id="distance" name="form" />Дистанционная<br /><br />
+
+        Продолжительность (в часах)<br />
+        <input type="text" name="Length" style="width:860px;" /><br /><br />
+
+        Тип результата <br />
+        <select style="width: 200px;" name="Type">
+            <option value="1">Оценка</option>
+            <option value="0">Сертификат</option>
+            <option value="NULL">Присутствие</option>
+        </select>
+
+        <div class="button_panel_wrapper_right">
+            <button class="neutral" onclick="Cancel();">
+                Отмена
+            </button>
+            <button class="positive_green" onclick="Save();">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="page_block">
+    <div class="block_header_inner">
+        Курсы
+    </div>
+    <div class="block_command_panel">
+        <button class="positive_green" style="float: right;" onclick="Add();">Добавить</button>
+    </div>
+    <table class="learning">
+        <thead>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Форма обучения</th>
+            <th>Продолжительность в часах</th>
+            <th>Тип результата</th>
+            <th>Действие</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Courses) {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.GetForm()</td>
+                    <td>@item.GetLength()</td>
+                    <td>@item.GetCourseResultType()</td>
+                    <td><span onclick="Edit(@item.Id);">Редактировать</span> <br /><span onclick="Delete(@item.Id)">Удалить</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function Add() {
+        $("[name=Id]").val("s");
+
+        $("[name=Name]").val("");
+        $("[name=form]").prop('checked', false);
+        $("[name=Length]").val("");
+        $("[name=Type]").val("");
+
+        $(".block_header_strong").text("Добавление курса");
+
+        $(".holder").show();
+    }
+
+    function Edit(id) {
+        $(".holder").show();
+        $("[name=Id]").val(id);
+
+        $(".block_header_strong").text("Редактирование курса");
+
+        var table = document.getElementsByClassName("learning")[0];
+
+        for (var i = 1; i < table.rows.length; i++) {
+            if (table.rows[i].cells[0].innerText == id) {
+                $("[name=Name]").val(table.rows[i].cells[1].innerText);
+                
+                if (table.rows[i].cells[2].innerText.indexOf("Очная") != -1) {
+                    //select ochn
+                    $("#ochn").prop('checked', true);
+                } else {
+                    //select distance
+                    $("#distance").prop('checked', true);
+                }
+
+                $("[name=Length]").val(table.rows[i].cells[3].innerText);
+
+                if (table.rows[i].cells[4].innerText.indexOf("Сертификат") != -1) {
+                    $("[name=Type]").val("0");
+                } else if (table.rows[i].cells[4].innerText.indexOf("Оценка") != -1) {
+                    $("[name=Type]").val("1");
+                } else {
+                    $("[name=Type]").val("NULL");
+                }
+
+                return;
+            }
+        }
+    }
+
+    function Save() {
+        //todo: валидация
+        var id = $("[name=Id]").val();
+        var name = $("[name=Name]").val(); // != null
+        var isRemote = $("#distance").prop('checked');
+        var length = $("[name=Length]").val();
+        var type = $("[name=Type]").val();
+
+        //alert('id: ' + id + " name: " + name + " isRemote: " + isRemote + " length: " + length + " type: " + type);
+
+        var url = "SaveCourse";
+
+        if (isNaN(id)) {
+            url = "AddCourse";
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/catalog/' + url,
+            data: { Id: id, Name: name, IsRemote: isRemote, Length: length, Type: type},
+            success: function () {
+                document.location.href = '/catalog/courses';
+            }
+        });
+    }
+
+    function Cancel() {
+        $(".holder").hide();
+        $("[name=Id]").val("s");
+
+        $("[name=Name]").val("");
+        $("[name=form]").prop('checked', false);
+        $("[name=Length]").val("");
+        $("[name=Type]").val("");
+    }
+
+    function Delete(id) {
+        if (confirm('Вы уверены что хотите удалить этот курс?')) {
+            $.ajax({
+                type: 'POST',
+                url: '/catalog/deleteCourse',
+                data: { Id: id },
+                success: function () {
+                    document.location.href = '/catalog/courses';
+                }
+            });
+        }
+    }
+</script>
