@@ -6,8 +6,8 @@ using System.Web;
 namespace testProject.Models.ViewModels.Feed {
     public enum NewsType {
         Information = 0,
-        Positive,
-        Negative
+        Positive = 1,
+        Negative = 2
     }
     public class News {
         public int Id { get; set; }
@@ -17,14 +17,13 @@ namespace testProject.Models.ViewModels.Feed {
         /// </summary>
         public int ReaderId { get; set; }
         public DateTime CreateDate { get; set; }
-        public DateTime ReadDate { get; set; }
+        public DateTime? ReadDate { get; set; }
         public string Header { get; set; }
         public string Text { get; set; }
         public NewsType Type { get; set; }
-        public bool IsReaded { get; set; }
 
         public string getCssClass() {
-            return Type.ToString() + (IsReaded ? "_Readed" : "");
+            return Type.ToString() + (ReadDate.HasValue ? "_Readed" : "");
         }
     }
 }

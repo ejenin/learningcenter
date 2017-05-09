@@ -22,8 +22,7 @@ namespace testProject.Controllers {
                 Text = "Пример информационной новости",
                 Header = "Заголовок информационной непрочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Information,
-                ReaderId = 0,
-                IsReaded = false
+                ReaderId = 0
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
@@ -32,8 +31,7 @@ namespace testProject.Controllers {
                 Text = "Пример позитивной новости",
                 Header = "Заголовок позитивной непрочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Positive,
-                ReaderId = 0,
-                IsReaded = false
+                ReaderId = 0
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
@@ -42,8 +40,7 @@ namespace testProject.Controllers {
                 Text = "Пример негативной новости",
                 Header = "Заголовок негативной непрочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Negative,
-                ReaderId = 0,
-                IsReaded = false
+                ReaderId = 0
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
@@ -53,7 +50,7 @@ namespace testProject.Controllers {
                 Header = "Заголовок информационной прочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Information,
                 ReaderId = 0,
-                IsReaded = true
+                ReadDate = new DateTime(2017,05,05)
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
@@ -63,7 +60,7 @@ namespace testProject.Controllers {
                 Header = "Заголовок позитивной прочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Positive,
                 ReaderId = 0,
-                IsReaded = true
+                ReadDate = new DateTime(2017, 05, 05)
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
@@ -73,7 +70,7 @@ namespace testProject.Controllers {
                 Header = "Заголовок негативной прочитанной новости",
                 Type = Models.ViewModels.Feed.NewsType.Negative,
                 ReaderId = 0,
-                IsReaded = true
+                ReadDate = new DateTime(2017, 05, 05)
             });
 
             feed.newsToShow = feed.newsToShow.OrderByDescending(n => n.Id).ToList();
