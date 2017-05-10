@@ -26,5 +26,7 @@ namespace testProject.Misc {
             }
             return res;
         }
+
+        public static string DEFAULT_AVATAR = "/files/default/deafult_avatar.png";
     }
 }

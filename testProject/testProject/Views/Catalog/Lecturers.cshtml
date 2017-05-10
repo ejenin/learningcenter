@@ -12,18 +12,23 @@
 
         <input type="hidden" name="Id" value="s" />
 
+        <img src="@testProject.Misc.Globals.DEFAULT_AVATAR" style="float: left;"/>
+
         ФИО <br />
-        <input type="text" name="FIO" style="width:860px;" /><br />
+        <input type="text" name="FIO" style="width: 600px;" /><br />
 
         Организация <br />
-        <input id="Organization" type="text" style="width:860px;" /><br />
+        <input id="Organization" type="text" style="width: 600px;" /><br />
         <input type="hidden" name="OrganizationId" value="" />
 
         Email <br />
-        <input type="text" name="Email" style="width:860px;" /><br />
+        <input type="text" name="Email" style="width: 600px;"><br />
 
         Телефон <br />
-        <input type="text" name="Phone" style="width:860px;" /><br />
+        <input type="text" name="Phone" style="width: 600px;" /><br />
+
+        Обновить фотографию: 
+        <input type="file" name="newAvatar" />
 
         <div class="button_panel_wrapper_right">
             <button class="neutral" onclick="Cancel();">
