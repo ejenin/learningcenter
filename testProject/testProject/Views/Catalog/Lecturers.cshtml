@@ -10,34 +10,37 @@
             Редактирование преподавателя
         </span><br />
 
-        <input type="hidden" name="Id" value="s" />
+        <form method="post" action="/catalog/SaveLecturer" enctype="multipart/form-data">
 
-        <img src="@testProject.Misc.Globals.DEFAULT_AVATAR" style="float: left;"/>
+            <input type="hidden" name="Id" value="s" />
 
-        ФИО <br />
-        <input type="text" name="FIO" style="width: 600px;" /><br />
+            <img src="@testProject.Misc.Globals.DEFAULT_AVATAR" style="float: left;" />
 
-        Организация <br />
-        <input id="Organization" type="text" style="width: 600px;" /><br />
-        <input type="hidden" name="OrganizationId" value="" />
+            ФИО <br />
+            <input type="text" name="FIO" style="width: 600px;" /><br />
 
-        Email <br />
-        <input type="text" name="Email" style="width: 600px;"><br />
+            Организация <br />
+            <input id="Organization" type="text" style="width: 600px;" /><br />
+            <input type="hidden" name="OrganizationId" value="" />
 
-        Телефон <br />
-        <input type="text" name="Phone" style="width: 600px;" /><br />
+            Email <br />
+            <input type="text" name="Email" style="width: 600px;"><br />
 
-        Обновить фотографию: 
-        <input type="file" name="newAvatar" />
+            Телефон <br />
+            <input type="text" name="Phone" style="width: 600px;" /><br />
 
-        <div class="button_panel_wrapper_right">
-            <button class="neutral" onclick="Cancel();">
-                Отмена
-            </button>
-            <button class="positive_green" onclick="Save();">
-                Сохранить
-            </button>
-        </div>
+            Обновить фотографию:
+            <input type="file" name="newAvatar" />
+
+            <div class="button_panel_wrapper_right">
+                <button class="neutral" onclick="Cancel();">
+                    Отмена
+                </button>
+                <button class="positive_green" onclick="Save();">
+                    Сохранить
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 

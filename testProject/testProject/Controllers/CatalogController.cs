@@ -101,6 +101,13 @@ namespace testProject.Controllers
             LecturersModel model = new LecturersModel();
             return View(model);
         }
+
+        [HttpPost, ActionName("SaveLecturer")]
+        public ActionResult SaveLecturer(string Id, string FIO, string OrganizationId, string Email, string Phone, HttpPostedFileBase newAvatar) {
+
+            Console.WriteLine("bp");
+            return Redirect("/catalog/lecturers");
+        }
         #endregion
 
         #region ORGANIZATIONS
