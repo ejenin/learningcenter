@@ -1,0 +1,163 @@
+﻿@model testProject.Models.ViewModels.Catalogs.OrganizationsModel
+@{
+    ViewBag.Title = "Внешние организации";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+<div class="holder" @*style="display: block;"*@>
+    <div class="page_block">
+        <span class="block_header_strong">
+            Редактирование организации
+        </span><br />
+
+        <input type="hidden" name="Id" value="s" />
+
+        Наименование <br />
+        <input type="text" name="Name" style="width:860px;" /><br /><br />
+
+        Контактный Email<br />
+        <input type="text" name="Email" style="width:860px;" /><br /><br />
+
+        Контактный телефон<br />
+        <input type="text" name="Phone" style="width:860px;" /><br /><br />
+
+        Контактное лицо<br />
+        <input type="text" name="ContactFio" style="width:860px;" /><br />
+
+        <div class="button_panel_wrapper_right">
+            <button class="neutral" onclick="Cancel();">
+                Отмена
+            </button>
+            <button class="positive_green" onclick="Save();">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="page_block">
+    <div class="block_header_inner">
+        Внешние организации
+    </div>
+    <div class="block_command_panel">
+        <button class="positive_green" style="float: right;" onclick="Add();">Добавить</button>
+    </div>
+    <table class="learning">
+        <thead>
+            <th>ID</th>
+            <th>Наименование</th>
+            <th>Email</th>
+            <th>Контактный телефон</th>
+            <th>Контактное лицо</th>
+            <th>Действие</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Organizations) {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@(!testProject.Misc.Globals.StringIsEmpty(item.Email) ? item.Email : "-")</td>
+                    <td>@(!testProject.Misc.Globals.StringIsEmpty(item.Phone) ? item.Phone : "-")</td>
+                    <td>@(!testProject.Misc.Globals.StringIsEmpty(item.ContactFio) ? item.ContactFio : "-")</td>
+                    <td><span onclick="Edit(@item.Id);">Редактировать</span> <br /><span onclick="Delete(@item.Id)">Удалить</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    //done
+    function Add() {
+        $("[name=Id]").val("s");
+
+        //Id
+        //Name
+        //Email
+        //Phone
+        //ContactFio
+
+        $("[name=Name]").val("");
+        $("[name=Email]").val("");
+        $("[name=Phone]").val("");
+        $("[name=ContactFio]").val("");
+
+        $(".block_header_strong").text("Добавление организации");
+
+        $(".holder").show();
+    }
+
+    //done
+    function Edit(id) {
+        $(".holder").show();
+        $("[name=Id]").val(id);
+        //$(".area_popup").show(200);
+
+        $(".block_header_strong").text("Редактирование площадки");
+
+        var table = document.getElementsByClassName("learning")[0];
+
+        for (var i = 1; i < table.rows.length; i++) {
+            if (table.rows[i].cells[0].innerText == id) {
+                $("[name=Name]").val(table.rows[i].cells[1].innerText);
+                $("[name=Comment]").val(table.rows[i].cells[2].innerText);
+
+                $("[name=Name]").val(table.rows[i].cells[1].innerText);
+                $("[name=Email]").val(table.rows[i].cells[2].innerText == "-" ? "" : table.rows[i].cells[2].innerText);
+                $("[name=Phone]").val(table.rows[i].cells[3].innerText == "-" ? "" : table.rows[i].cells[3].innerText);
+                $("[name=ContactFio]").val(table.rows[i].cells[4].innerText == "-" ? "" : table.rows[i].cells[4].innerText);
+                return;
+            }
+        }
+    }
+
+    //done
+    function Save() {
+        //todo: валидация
+        var id = $("[name=Id]").val();
+        var name = $("[name=Name]").val();
+        var mail = $("[name=Email]").val();
+        var phone = $("[name=Phone]").val();
+        var fio = $("[name=ContactFio]").val();
+
+        var url = "SaveOrganization";
+
+        if (isNaN(id)) {
+            url = "AddOrganization";
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/catalog/' + url,
+            data: { Id: id, Name: name, Mail: mail, Phone: phone, Fio: fio},
+            success: function () {
+                document.location.href = '/catalog/organizations';
+            }
+        });
+    }
+
+    //done
+    function Cancel() {
+        $(".holder").hide();
+        $("[name=Id]").val("s");
+
+        $("[name=Name]").val("");
+        $("[name=Email]").val("");
+        $("[name=Phone]").val("");
+        $("[name=ContactFio]").val("");
+    }
+
+
+    function Delete(id) {
+        if (confirm('Вы уверены что хотите удалить эту организацию?')) {
+            $.ajax({
+                type: 'POST',
+                url: '/catalog/deleteOrganization',
+                data: { id: id },
+                success: function () {
+                    document.location.href = '/catalog/organizations';
+                }
+            });
+        }
+    }
+</script>

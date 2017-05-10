@@ -273,6 +273,14 @@ tr.not_success {
     background-color: lightgray;
 }
 
+tr.success:hover{
+    background-color:#a2eba2;
+}
+
+tr.not_success:hover {
+    background-color: #f3bdc6;
+}
+
 .info_row {
     background-color: #cbdce1;
 }

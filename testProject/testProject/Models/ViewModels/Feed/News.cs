@@ -9,6 +9,11 @@ namespace testProject.Models.ViewModels.Feed {
         Positive = 1,
         Negative = 2
     }
+
+    public enum InformationType {
+
+    }
+
     public class News {
         public int Id { get; set; }
 
@@ -21,6 +26,7 @@ namespace testProject.Models.ViewModels.Feed {
         public string Header { get; set; }
         public string Text { get; set; }
         public NewsType Type { get; set; }
+        public InformationType InfoType { get; set; }
 
         public string getCssClass() {
             return Type.ToString() + (ReadDate.HasValue ? "_Readed" : "");

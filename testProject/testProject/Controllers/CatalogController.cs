@@ -86,5 +86,55 @@ namespace testProject.Controllers
             DbMess.DoAction(query);
         }
         #endregion
+
+        #region GROUPS (NOT DONE)
+        [HttpGet, ActionName("groups")]
+        public ActionResult Groups(int? page) {
+            GroupsModel model = new GroupsModel();
+            return View(model);
+        }
+        #endregion
+
+        #region LECTURERS (NOT DONE)
+        [HttpGet, ActionName("lecturers")]
+        public ActionResult Lecturers(int? page) {
+            LecturersModel model = new LecturersModel();
+            return View(model);
+        }
+        #endregion
+
+        #region ORGANIZATIONS
+        [HttpGet, ActionName("organizations")]
+        public ActionResult Organizations(int? page) {
+            OrganizationsModel model = new OrganizationsModel();
+            return View(model);
+        }
+
+        [HttpPost, ActionName("SaveOrganization")]
+        public void SaveOrganization(string Id, string Name, string Mail, string Phone, string Fio) {
+            string mail = Globals.StringIsEmpty(Mail) ? "NULL" : "'" + Mail + "'";
+            string phone = Globals.StringIsEmpty(Phone) ? "NULL" : "'" + Phone + "'";
+            string fio = Globals.StringIsEmpty(Fio) ? "NULL" : "'" + Fio + "'";
+
+            string query = "UPDATE Organizations SET Name='" + Name + "', Email=" + mail + ",Phone=" + phone + ", ContactFio=" + fio + " WHERE IdOrganization=" + Id;
+            DbMess.DoAction(query);
+        }
+
+        [HttpPost, ActionName("AddOrganization")]
+        public void AddOrganization(string Id, string Name, string Mail, string Phone, string Fio) {
+            string mail = Globals.StringIsEmpty(Mail) ? "NULL" : "'" + Mail + "'";
+            string phone = Globals.StringIsEmpty(Phone) ? "NULL" : "'" + Phone + "'";
+            string fio = Globals.StringIsEmpty(Fio) ? "NULL" : "'" + Fio + "'";
+
+            string query = "INSERT INTO Organizations VALUES('" + Name + "'," + mail + "," + phone + "," + fio + ", 0)";
+            DbMess.DoAction(query);
+        }
+
+        [HttpPost, ActionName("DeleteOrganization")]
+        public void DeleteOrganization(string id) {
+            string query = "UPDATE Organizations SET IsDeleted=1 WHERE IdOrganization=" + id;
+            DbMess.DoAction(query);
+        }
+        #endregion
     }
 }

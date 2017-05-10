@@ -1,0 +1,90 @@
+﻿@model testProject.Models.ViewModels.Catalogs.LecturersModel
+@{
+    ViewBag.Title = "Преподаватели";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+<div class="holder" style="display: block;">
+    <div class="page_block">
+        <span class="block_header_strong">
+            Редактирование преподавателя
+        </span><br />
+
+        <input type="hidden" name="Id" value="s" />
+
+        ФИО <br />
+        <input type="text" name="FIO" style="width:860px;" /><br />
+
+        Организация <br />
+        <input id="Organization" type="text" style="width:860px;" /><br />
+        <input type="hidden" name="OrganizationId" value="" />
+
+        Email <br />
+        <input type="text" name="Email" style="width:860px;" /><br />
+
+        Телефон <br />
+        <input type="text" name="Phone" style="width:860px;" /><br />
+
+        <div class="button_panel_wrapper_right">
+            <button class="neutral" onclick="Cancel();">
+                Отмена
+            </button>
+            <button class="positive_green" onclick="Save();">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="page_block">
+    <div class="block_header_inner">
+        Преподаватели
+    </div>
+    <div class="block_command_panel">
+        <button class="positive_green" style="float: right;" onclick="Add();">Добавить</button>
+    </div>
+    <table class="learning">
+        <thead>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Организация</th>
+            <th>Email</th>
+            <th>Телефон</th>
+            <th>Действие</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Lecturers) {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.FIO</td>
+                    <td>@(item.OrganizationId.HasValue ? item.OrganizationName : "-")</td>
+                    <td>@(!testProject.Misc.Globals.StringIsEmpty(item.Email) ? item.Email : "-")</td>
+                    <td>@(!testProject.Misc.Globals.StringIsEmpty(item.ContactPhone) ? item.ContactPhone : "-")</td>
+                    <td><span onclick="Edit(@item.Id);">Редактировать</span> <br /><span onclick="Delete(@item.Id)">Удалить</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        @MvcHtmlString.Create(Model.JSCode)
+
+        $("#Organization").autocomplete({
+            //source: ['1', '2'],
+            source: availableOrgs,
+            minLength: 0,
+            delay: 0,
+            select: function (event, ui) {
+                $("[name=OrganizationId]").val(ui.item.idwka)
+            }
+        });
+
+        $("#Organization").bind('focus', function () {
+            if ($(this).val() == '')
+                $(this).autocomplete('search', '');
+        });
+    });
+</script>

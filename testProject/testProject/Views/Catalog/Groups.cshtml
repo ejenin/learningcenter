@@ -1,0 +1,65 @@
+﻿@model testProject.Models.ViewModels.Catalogs.GroupsModel
+@{
+    ViewBag.Title = "Группы";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+<div class="holder">
+    <div class="page_block">
+        <span class="block_header_strong">
+            Редактирование группы
+        </span><br />
+
+        <input type="hidden" name="Id" value="s" />
+
+        Адрес <br />
+        <input type="text" name="Address" style="width:860px;" /><br />
+
+        Комментарий<br />
+        <textarea name="Comment" style="width: 860px;"></textarea>
+
+        <div class="button_panel_wrapper_right">
+            <button class="neutral" onclick="Cancel();">
+                Отмена
+            </button>
+            <button class="positive_green" onclick="Save();">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="page_block">
+    <div class="block_header_inner">
+        Группы
+    </div>
+    <div class="block_command_panel">
+        <button class="positive_green" style="float: right;" onclick="Add();">Добавить</button>
+    </div>
+    <table class="learning">
+        <thead>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Курс</th>
+            <th>Дата начала обучения</th>
+            <th>Дата окончания обучения</th>
+            <th>Площадка</th>
+            <th>Преподаватель</th>
+            <th>Действие</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Groups) {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.CourseName</td>
+                    <td>@(item.DateStart.HasValue ? item.DateStart.Value.ToShortDateString() : "-")</td>
+                    <td>@(item.DateEnd.HasValue ? item.DateEnd.Value.ToShortDateString() : "-")</td>
+                    <td>@(item.AreaId.HasValue ? item.AreaName : "-")</td>
+                    <td>@(item.LecturerId.HasValue ? item.LecturerName : "-")</td>
+                    <td><span onclick="Edit(@item.Id);">Редактировать</span> <br /><span onclick="Delete(@item.Id)">Удалить</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

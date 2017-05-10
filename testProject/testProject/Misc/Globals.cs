@@ -18,5 +18,13 @@ namespace testProject.Misc {
         public static bool StringIsEmpty(string val) {
             return String.IsNullOrEmpty(val) || String.IsNullOrWhiteSpace(val);
         }
+
+        public static int? GetSafeIntVal(string val) {
+            int res = 0;
+            if (StringIsEmpty(val) || !int.TryParse(val, out res)) {
+                return null;
+            }
+            return res;
+        }
     }
 }
