@@ -12,14 +12,15 @@ namespace testProject.Models.ViewModels.Catalogs {
         public List<string> OrganizationIds { get; set; }
         public List<string> OrganizationNames { get; set; }
 
-        public string JSCode { get; set; }
+        public string JSCode1 { get; set; }
+        public string JSCode2 { get; set; }
 
         public LecturersModel() {
             Lecturers = new List<Lecturer>();
             OrganizationIds = new List<string>();
             OrganizationNames = new List<string>();
 
-            string query = "SELECT L.IdLecturer, L.FIO, L.OrganizationId, L.AvatarFileId, L.Email, L.ContactPhone, F.Path, O.Name FROM Lecturers AS L LEFT JOIN Organizations AS O ON L.OrganizationId=O.IdOrganization LEFT JOIN Files AS F ON L.AvatarFileId=F.IdFile WHERE L.IsDeleted=0";
+            string query = "SELECT L.IdLecturer, L.FIO, L.OrganizationId, L.AvatarFileId, L.Email, L.ContactPhone, F.RelativePath, O.Name FROM Lecturers AS L LEFT JOIN Organizations AS O ON L.OrganizationId=O.IdOrganization LEFT JOIN Files AS F ON L.AvatarFileId=F.IdFile WHERE L.IsDeleted=0";
 
             var table = DbMess.GetTable(query);
 
@@ -43,15 +44,30 @@ namespace testProject.Models.ViewModels.Catalogs {
                 OrganizationNames.Add(table.Rows[i][1].ToString());
             }
 
-            JSCode = "var availableOrgs = [";
+            JSCode1 = "var availableOrgs = [";
 
             for (int i = 0; i < OrganizationIds.Count; i++) {
-                JSCode += " {label:\"" + OrganizationNames[i] + "\", idwka:\"" + OrganizationIds[i] + "\", value:\"" + OrganizationNames[i] + "\"}";
+                JSCode1 += " {label:\"" + OrganizationNames[i] + "\", idwka:\"" + OrganizationIds[i] + "\", value:\"" + OrganizationNames[i] + "\"}";
                 if (i != OrganizationIds.Count - 1)
-                    JSCode += ",";
+                    JSCode1 += ",";
             }
 
-            JSCode += "];";
+            JSCode1 += "];";
+
+
+            JSCode2 = "var availableCourses = [";
+
+            query = "SELECT IdCourse, Name FROM Courses WHERE IsDeleted=0";
+            
+            table = DbMess.GetTable(query);
+
+            for (int i = 0; i < table.Rows.Count; i++) {
+                JSCode2 += " {label:\"" + table.Rows[i][1].ToString() + "\", idwka:\"" + table.Rows[i][0].ToString() + "\", value:\"" + table.Rows[i][1].ToString() + "\"}";
+                if (i != table.Rows.Count - 1)
+                    JSCode2 += ",";
+            }
+
+            JSCode2 += "];";
         }
     }
 }

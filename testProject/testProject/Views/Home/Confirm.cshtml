@@ -26,7 +26,7 @@
                         <td>@Model.Bids[i].Area</td>
                         <td>@Model.Bids[i].LearningStart.ToShortDateString()</td>
                         <td>@Model.Bids[i].LearningEnd.ToShortDateString()</td>
-                        <td>Действия</td>
+                        <td>Принять<br />Изменить<br />Удалить</td>
                     </tr>
                 }
             </tbody>
@@ -59,7 +59,7 @@
                         <td>@Model.WaitingBids[i].Area</td>
                         <td>@Model.WaitingBids[i].LearningStart.ToShortDateString()</td>
                         <td>@Model.WaitingBids[i].LearningEnd.ToShortDateString()</td>
-                        <td>Действия</td>
+                        <td>Принять<br />Изменить<br />Удалить</td>
                     </tr>
                 }
             </tbody>
@@ -70,6 +70,7 @@
     }
 </div>
 
-<div class="page_block">
-    <div id="vidget_placeholder">ПЛЕЙСХОЛДЕР ДЛЯ ВИДЖЕТА</div>
+<div class="page_block" style="text-align: center;">
+    <img src="~/Files/Default/nabrosok.png" style="width:850px;"/>
+    @*<div id="vidget_placeholder">ПЛЕЙСХОЛДЕР</div>*@
 </div>

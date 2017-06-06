@@ -106,6 +106,48 @@ namespace testProject.Controllers
         public ActionResult SaveLecturer(string Id, string FIO, string OrganizationId, string Email, string Phone, HttpPostedFileBase newAvatar) {
 
             Console.WriteLine("bp");
+
+            //1) сохранить фотографию
+
+            string query = "";
+
+            if (newAvatar != null) {
+                string fileName = Globals.GetRandomName(10);
+                string avatarExtension = "." + newAvatar.FileName.Split('.').Last();
+                string picturePath = null;
+
+                string normalPath = "/Files/Avatars/" + fileName + avatarExtension;
+
+                picturePath = Server.MapPath("~/Files/Avatars/" + fileName + avatarExtension);
+                newAvatar.SaveAs(picturePath);
+
+                //2) проверить, есть ли уже у этого препода фотография
+                query = "SELECT AvatarFileId FROM Lecturers WHERE IdLecturer=" + Id;
+                string fileId = DbMess.GetValue(query);
+                if (!Globals.StringIsEmpty(fileId)) {
+                    //3.a) если есть, заменить путь
+                    query = "UPDATE Files SET Path='" + picturePath + "' WHERE IdFile=" + fileId;
+                    DbMess.DoAction(query);
+                }
+                else {
+                    //3.b) если нет, инсёртнуть, забрать айдишник, и обновить поле у проеподавателя
+                    query = "INSERT INTO FILES VALUES('" + picturePath + "', '" + normalPath + "', GETDATE())";
+                    DbMess.DoAction(query);
+
+                    query = "SELECT MAX(IdFile) FROM Files";
+
+                    query = "UPDATE Lecturers SET AvatarFileId=" + DbMess.GetValue(query);
+                    DbMess.DoAction(query);
+                }
+            }
+
+            string org = Globals.StringIsEmpty(OrganizationId) ? "NULL" : OrganizationId;
+            string mail = Globals.StringIsEmpty(Email) ? "NULL" : "'" + Email + "'";
+            string phone = Globals.StringIsEmpty(Phone) ? "NULL" : "'" + Phone + "'";
+            //теперь обновить остальные поля ))
+            query = "UPDATE Lecturers SET FIO='" + FIO + "', OrganizationId=" + org + ", Email=" + mail + ", ContactPhone=" + phone + " WHERE IdLecturer=" + Id;
+            DbMess.DoAction(query);
+
             return Redirect("/catalog/lecturers");
         }
         #endregion

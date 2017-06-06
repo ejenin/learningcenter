@@ -16,62 +16,91 @@ namespace testProject.Controllers {
 
         public ActionResult Feed() {
             FeedModel feed = new FeedModel();
+
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+                CreateDate = DateTime.Now,
                 Id = 0,
-                CreateDate = DateTime.Now,
-                Text = "Пример информационной новости",
-                Header = "Заголовок информационной непрочитанной новости",
+                Header = "Вам назначены новые курсы!",
+                Text = "Перейдите в раздел \"Планирование\" для подробной информации",
                 Type = Models.ViewModels.Feed.NewsType.Information,
-                ReaderId = 0
+                ReaderId = 0,
+                ReadDate = DateTime.Now
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+                CreateDate = DateTime.Now,
                 Id = 1,
-                CreateDate = DateTime.Now,
-                Text = "Пример позитивной новости",
-                Header = "Заголовок позитивной непрочитанной новости",
+                Header = "Ваша заявка согласована!",
+                Text = "Руководитель согласовал вашу заявку на обучение! Перейдите в раздел \"Планирование\" для подробной информации",
                 Type = Models.ViewModels.Feed.NewsType.Positive,
-                ReaderId = 0
+                ReaderId = 0,
+                ReadDate = DateTime.Now
             });
 
             feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+                CreateDate = DateTime.Now,
                 Id = 2,
-                CreateDate = DateTime.Now,
-                Text = "Пример негативной новости",
-                Header = "Заголовок негативной непрочитанной новости",
+                Header = "Ваше обучение было отменено!",
+                Text = "Одна из групп, в которой вы должны были проходить обучение, была отменена. Подробнее по ссылке",
                 Type = Models.ViewModels.Feed.NewsType.Negative,
                 ReaderId = 0
             });
+            //feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+            //    Id = 0,
+            //    CreateDate = DateTime.Now,
+            //    Text = "Пример информационной новости",
+            //    Header = "Заголовок информационной непрочитанной новости",
+            //    Type = Models.ViewModels.Feed.NewsType.Information,
+            //    ReaderId = 0
+            //});
 
-            feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
-                Id = 3,
-                CreateDate = DateTime.Now,
-                Text = "Пример информационной новости",
-                Header = "Заголовок информационной прочитанной новости",
-                Type = Models.ViewModels.Feed.NewsType.Information,
-                ReaderId = 0,
-                ReadDate = new DateTime(2017,05,05)
-            });
+            //feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+            //    Id = 1,
+            //    CreateDate = DateTime.Now,
+            //    Text = "Пример позитивной новости",
+            //    Header = "Заголовок позитивной непрочитанной новости",
+            //    Type = Models.ViewModels.Feed.NewsType.Positive,
+            //    ReaderId = 0
+            //});
 
-            feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
-                Id = 4,
-                CreateDate = DateTime.Now,
-                Text = "Пример позитивной новости",
-                Header = "Заголовок позитивной прочитанной новости",
-                Type = Models.ViewModels.Feed.NewsType.Positive,
-                ReaderId = 0,
-                ReadDate = new DateTime(2017, 05, 05)
-            });
+            //feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+            //    Id = 2,
+            //    CreateDate = DateTime.Now,
+            //    Text = "Пример негативной новости",
+            //    Header = "Заголовок негативной непрочитанной новости",
+            //    Type = Models.ViewModels.Feed.NewsType.Negative,
+            //    ReaderId = 0
+            //});
 
-            feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
-                Id = 5,
-                CreateDate = DateTime.Now,
-                Text = "Пример негативной новости",
-                Header = "Заголовок негативной прочитанной новости",
-                Type = Models.ViewModels.Feed.NewsType.Negative,
-                ReaderId = 0,
-                ReadDate = new DateTime(2017, 05, 05)
-            });
+            //feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+            //    Id = 3,
+            //    CreateDate = DateTime.Now,
+            //    Text = "Пример информационной новости",
+            //    Header = "Заголовок информационной прочитанной новости",
+            //    Type = Models.ViewModels.Feed.NewsType.Information,
+            //    ReaderId = 0,
+            //    ReadDate = new DateTime(2017,05,05)
+            //});
+
+            //feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+            //    Id = 4,
+            //    CreateDate = DateTime.Now,
+            //    Text = "Пример позитивной новости",
+            //    Header = "Заголовок позитивной прочитанной новости",
+            //    Type = Models.ViewModels.Feed.NewsType.Positive,
+            //    ReaderId = 0,
+            //    ReadDate = new DateTime(2017, 05, 05)
+            //});
+
+            //feed.newsToShow.Add(new Models.ViewModels.Feed.News() {
+            //    Id = 5,
+            //    CreateDate = DateTime.Now,
+            //    Text = "Пример негативной новости",
+            //    Header = "Заголовок негативной прочитанной новости",
+            //    Type = Models.ViewModels.Feed.NewsType.Negative,
+            //    ReaderId = 0,
+            //    ReadDate = new DateTime(2017, 05, 05)
+            //});
 
             feed.newsToShow = feed.newsToShow.OrderByDescending(n => n.Id).ToList();
 
@@ -247,54 +276,66 @@ namespace testProject.Controllers {
             //3) тот самый компонент с визуальным отображением. Что? куча дивов? канвас? обычный битмап?
             //4) лист ожидания. Надо всё таки его блять сделать.
 
-            DateTime bidDate = new DateTime(2017, 03, 03);
-            DateTime LearningStart = new DateTime(2017, 03, 15);
-            DateTime LearningEnd = new DateTime(2017, 03, 20);
+            //DateTime bidDate = new DateTime(2017, 03, 03);
+            //DateTime LearningStart = new DateTime(2017, 03, 15);
+            //DateTime LearningEnd = new DateTime(2017, 03, 20);
 
             ConfirmModel model = new ConfirmModel();
             model.Bids.Add(new Bid() {
                 Area = "г. Тобольск, ул. Мира, дом 9",
-                BidDate = bidDate,
+                BidDate = new DateTime(2017, 04, 03),
                 Course = "Мастерство владения холодными звонками",
-                EmployeeFio = "Хорищенко Е.К.",
-                IsInWaitingList = false, 
-                LearningStart = LearningStart,
-                LearningEnd = LearningEnd,
+                EmployeeFio = "Иванов С.А.",
+                IsInWaitingList = false,
+                LearningStart = new DateTime(2017, 04, 07),
+                LearningEnd = new DateTime(2017, 04, 12),
                 Status = BidStatus.WaitingToConfirm
-            });
-
-            model.WaitingBids.Add(new Bid() {
-                Area = "г. Тобольск, ул. Мира, дом 9",
-                BidDate = bidDate,
-                Course = "Мастерство владения холодными звонками",
-                EmployeeFio = "Хорищенко Е.К.",
-                IsInWaitingList = true,
-                LearningStart = LearningStart,
-                LearningEnd = LearningEnd,
-                Status = BidStatus.Confirmed
             });
 
             model.Bids.Add(new Bid() {
                 Area = "г. Тобольск, ул. Мира, дом 9",
-                BidDate = bidDate,
+                BidDate = new DateTime(2017, 04, 03),
                 Course = "Мастерство владения холодными звонками",
-                EmployeeFio = "Хорищенко Е.К.",
+                EmployeeFio = "Сидорова А.Н.",
                 IsInWaitingList = false,
-                LearningStart = LearningStart,
-                LearningEnd = LearningEnd,
+                LearningStart = new DateTime(2017, 04, 13),
+                LearningEnd = new DateTime(2017, 04, 17),
                 Status = BidStatus.Rejected
             });
 
             model.Bids.Add(new Bid() {
                 Area = "г. Тобольск, ул. Мира, дом 9",
-                BidDate = bidDate,
-                Course = "Мастерство владения холодными звонками",
-                EmployeeFio = "Хорищенко Е.К.",
+                BidDate = new DateTime(2017, 04, 03),
+                Course = "Мастерство владения холодными звонками (уровень 2)",
+                EmployeeFio = "Иванов С.А.",
                 IsInWaitingList = false,
-                LearningStart = LearningStart,
-                LearningEnd = LearningEnd,
+                LearningStart = new DateTime(2017, 04, 18),
+                LearningEnd = new DateTime(2017, 04, 22),
                 Status = BidStatus.SwappedByHands
             });
+
+            model.Bids.Add(new Bid() {
+                Area = "г. Тобольск, ул. Мира, дом 9",
+                BidDate = new DateTime(2017, 04, 03),
+                Course = "Мастерство владения холодными звонками",
+                EmployeeFio = "Петров Е.Г.",
+                IsInWaitingList = true,
+                LearningStart = new DateTime(2017, 04, 20),
+                LearningEnd = new DateTime(2017, 04, 24),
+                Status = BidStatus.Confirmed
+            });
+
+
+            //model.WaitingBids.Add(new Bid() {
+            //    Area = "г. Тобольск, ул. Мира, дом 9",
+            //    BidDate = new DateTime(2017, 04, 03),
+            //    Course = "Мастерство владения холодными звонками",
+            //    EmployeeFio = "Хорищенко Е.К.",
+            //    IsInWaitingList = true,
+            //    LearningStart = new DateTime(2017, 04, 20),
+            //    LearningEnd = new DateTime(2017, 04, 24),
+            //    Status = BidStatus.Confirmed
+            //});
 
 
             model.Bids = model.Bids.OrderByDescending(b => b.Status).ToList();

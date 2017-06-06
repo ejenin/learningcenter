@@ -4,17 +4,17 @@
     Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
 }
 
-<div class="holder" style="display: block;">
+<div class="holder">
     <div class="page_block">
         <span class="block_header_strong">
             Редактирование преподавателя
         </span><br />
 
-        <form method="post" action="/catalog/SaveLecturer" enctype="multipart/form-data">
+        <form method="post" @*action="/catalog/SaveLecturer"*@ enctype="multipart/form-data" id="holderForm">
 
-            <input type="hidden" name="Id" value="s" />
+            <input type="hidden" name="Id" value="2" />
 
-            <img src="@testProject.Misc.Globals.DEFAULT_AVATAR" style="float: left;" />
+            <img src="" class="avatar" id="avatar" />
 
             ФИО <br />
             <input type="text" name="FIO" style="width: 600px;" /><br />
@@ -30,13 +30,31 @@
             <input type="text" name="Phone" style="width: 600px;" /><br />
 
             Обновить фотографию:
-            <input type="file" name="newAvatar" />
+            <input type="file" name="newAvatar" /> <br />
+            <br />
+
+            Проводимые курсы<br />
+
+            <input id="Course" type="text" style="width: 735px;" />
+            <input type="hidden" id="CourseId" value="" />
+
+            <span id="addcrs" onclick="appendRow()">Добавить</span>
+            <br />
+            <table class="learning">
+                <thead>
+                    <th>Курс</th>
+                    <th style="width: 100px;">Действие</th>
+                </thead>
+                <tbody id ="crss">
+                </tbody>
+            </table>
 
             <div class="button_panel_wrapper_right">
-                <button class="neutral" onclick="Cancel();">
+                <button class="neutral" @*onclick="Cancel();"*@>
                     Отмена
                 </button>
-                <button class="positive_green" onclick="Save();">
+
+                <button class="positive_green" @*onclick="Save();"*@>
                     Сохранить
                 </button>
             </div>
@@ -56,8 +74,10 @@
             <th>ID</th>
             <th>ФИО</th>
             <th>Организация</th>
+            <th style="display: none;">IdОрганизации</th>
             <th>Email</th>
             <th>Телефон</th>
+            <th style="display: none;">Путь до аватарки</th>
             <th>Действие</th>
         </thead>
         <tbody>
@@ -66,8 +86,21 @@
                     <td>@item.Id</td>
                     <td>@item.FIO</td>
                     <td>@(item.OrganizationId.HasValue ? item.OrganizationName : "-")</td>
+                    @if (item.OrganizationId.HasValue) {
+                        <td style="display: none;">@item.OrganizationId</td>
+                    }
+                    else {
+                        <td style="display: none;"></td>
+                    }
                     <td>@(!testProject.Misc.Globals.StringIsEmpty(item.Email) ? item.Email : "-")</td>
                     <td>@(!testProject.Misc.Globals.StringIsEmpty(item.ContactPhone) ? item.ContactPhone : "-")</td>
+                    @if (!testProject.Misc.Globals.StringIsEmpty(item.FilePath)) {
+                        <td style="display: none;">@item.FilePath</td>
+                    }
+                    else {
+                        <td style="display: none;">@testProject.Misc.Globals.DEFAULT_AVATAR</td>
+                    }
+
                     <td><span onclick="Edit(@item.Id);">Редактировать</span> <br /><span onclick="Delete(@item.Id)">Удалить</span></td>
                 </tr>
             }
@@ -76,9 +109,115 @@
 </div>
 
 <script>
+
+    //done
+    function Add() {
+        $("[name=Id]").val("s");
+
+        $("[name=FIO]").val("");
+        $("#Organization").val("");
+        $("[name=OrganizationId]").val("");
+        $("[name=Email]").val("");
+        $("[name=Phone]").val("");
+        $("[name=newAvatar]").val("");
+
+        //$("#holderForm").prop("action", "/catalog/AddLecturer");
+
+        $("#avatar").prop("src", "@testProject.Misc.Globals.DEFAULT_AVATAR");
+
+        $(".block_header_strong").text("Добавление преподавателя");
+
+        $(".holder").show();
+    }
+
+    //done
+    function Edit(id) {
+        $(".holder").show();
+        $("[name=Id]").val(id);
+
+        $("[name=FIO]").val("");
+        $("#Organization").val("");
+        $("[name=OrganizationId]").val("");
+        $("[name=Email]").val("");
+        $("[name=Phone]").val("");
+        $("[name=newAvatar]").val("");
+
+        //$("#holderForm").prop("action", "/catalog/SaveLecturer");
+
+
+        $(".block_header_strong").text("Редактирование преподавателя");
+
+        var table = document.getElementsByClassName("learning")[1];
+
+        for (var i = 1; i < table.rows.length; i++) {
+            if (table.rows[i].cells[0].innerText == id) {
+                $("[name=FIO]").val(table.rows[i].cells[1].innerText);
+                $("#Organization").val(table.rows[i].cells[2].innerText == "-" ? "" : table.rows[i].cells[2].innerText);
+                $("[name=OrganizationId]").val(table.rows[i].cells[3].innerText);
+                $("[name=Email]").val(table.rows[i].cells[4].innerText);
+                $("[name=Phone]").val(table.rows[i].cells[5].innerText);
+
+                $("#avatar").prop("src", table.rows[i].cells[6].innerText);
+                return;
+            }
+        }
+
+
+        //TODO: сделать доступной таблицу курс - преподаватель
+    }
+
+    //
+    //function Save() {
+    //    //todo: валидация
+    //    var id = $("[name=Id]").val();
+    //    var addr = $("[name=Address]").val(); // != null
+    //    var comm = $("[name=Comment]").val();
+
+    //    var url = "SaveArea";
+
+    //    if (isNaN(id)) {
+    //        url = "AddArea";
+    //    }
+
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: '/catalog/' + url,
+    //        data: {Id: id, Address: addr, Comment: comm },
+    //        success: function() {
+    //            document.location.href='/catalog/areas';
+    //        }
+    //    });
+    //}
+
+    function Cancel() {
+        $(".holder").hide();
+        $("[name=Id]").val("s");
+
+        $("[name=FIO]").val("");
+        $("#Organization").val("");
+        $("[name=OrganizationId]").val("");
+        $("[name=Email]").val("");
+        $("[name=Phone]").val("");
+        $("[name=newAvatar]").val("");
+    }
+
+    function Delete(id) {
+        if (confirm('Вы уверены что хотите удалить этого преподавателя?')) {
+            $.ajax({
+                type: 'POST',
+                url: '/catalog/deleteArea',
+                data: { Id: id },
+                success: function () {
+                    document.location.href = '/catalog/areas';
+                }
+            });
+        }
+    }
+
     $(document).ready(function () {
 
-        @MvcHtmlString.Create(Model.JSCode)
+        @MvcHtmlString.Create(Model.JSCode1)
+        @MvcHtmlString.Create(Model.JSCode2)
 
         $("#Organization").autocomplete({
             //source: ['1', '2'],
@@ -86,7 +225,7 @@
             minLength: 0,
             delay: 0,
             select: function (event, ui) {
-                $("[name=OrganizationId]").val(ui.item.idwka)
+                $("[name=OrganizationId]").val(ui.item.idwka);
             }
         });
 
@@ -94,5 +233,41 @@
             if ($(this).val() == '')
                 $(this).autocomplete('search', '');
         });
+
+
+        $("#Course").autocomplete({
+            source: availableCourses,
+            minLength: 0,
+            delay: 0,
+            select: function (event, ui) {
+                //$("[name=OrganizationId]").val(ui.item.idwka)
+
+                //appendRow(ui.item.idwka, ui.item.label);
+                $("#CourseId").val(ui.item.idwka);
+            }
+        });
+
+        $("#Course").bind('focus', function () {
+            if ($(this).val() == '')
+                $(this).autocomplete('search', '');
+        });
+
+        Edit(2);
     });
+
+    function appendRow() {
+
+        var id = $("#CourseId").val();
+        var text = $("#Course").val();
+
+        $("#CourseId").val("");
+        $("#Course").val("");
+
+        var prevVal = $("#crss").html();
+
+        //туду - проверить, нет ли уже такой записи
+        prevVal += "<tr><td>" + text + "</td><td>Удалить</td></tr>";
+
+        $("#crss").html(prevVal);
+    }
 </script>
