@@ -478,5 +478,9 @@ namespace testProject.Controllers {
         public ActionResult Area(int id) {
             return View();
         }
+
+        public ActionResult Group(int id) {
+            return View();
+        }
     }
 }
