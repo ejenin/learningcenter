@@ -8,6 +8,10 @@
 
 <div class="page_block">
     <span class="block_header">Текущее обучение</span>
+    <div class="search">
+        <img src="~/Files/Default/loop.png" class="search_preview" />
+        <input type="text" class="search_input" placeholder="Поиск"/>
+    </div>
     @if (Model.actualGroups.Count > 0) {
         <table class="learning">
             <thead>
@@ -35,20 +39,14 @@
     else {
         <span class="block_header"> - Нет информации</span>
     }
-
-    @*@foreach (var item in Model.actualGroups) {
-        <div class="group">
-            Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
-            <div class="hidden_block">
-                Преподаватель: <a href="">@item.Lecturer</a><br />
-                Площадка: <a href="">@item.Area</a>
-            </div>
-        </div>
-    }*@
 </div>
 
 <div class="page_block">
     <span class="block_header">Предстоящее обучение</span>
+    <div class="search">
+        <img src="~/Files/Default/loop.png" class="search_preview" />
+        <input type="text" class="search_input" placeholder="Поиск" />
+    </div>
     @if (Model.futureGroups.Count > 0) {
         <table class="learning">
             <thead>
@@ -77,19 +75,18 @@
         <span class="block_header"> - Нет информации</span>
     }
 
-    @*@foreach (var item in Model.futureGroups) {
-        <div class="group">
-            Группа: @item.GroupName (@item.Course) <div class="news_time">@item.DateStart.ToShortDateString()-@item.DateEnd.ToShortDateString()</div>
-            <div class="hidden_block">
-                Преподаватель: <a href="">@item.Lecturer</a><br />
-                Площадка: <a href="">@item.Area</a>
-            </div>
-        </div>
-    }*@
+    <div class="pagination">
+        <div class="pageNum">2</div>
+        <div class="pageNum pageNum_selected">1</div>
+    </div>
 </div>
 
 <div class="page_block">
     <span class="block_header">История обучения</span>
+    <div class="search">
+        <img src="~/Files/Default/loop.png" class="search_preview" />
+        <input type="text" class="search_input" placeholder="Поиск" />
+    </div>
     @if (Model.passedGroups.Count > 0) {
         <table class="learning">
             <thead>
@@ -119,16 +116,14 @@
     else {
         <span class="block_header"> - Нет информации</span>
     }
-    @*@foreach (var item in Model.passedGroups) {
-        <div class="@item.getClass()">
-            Группа: @item.Group.GroupName (@item.Group.Course) <div class="news_time">@item.Group.DateStart.ToShortDateString()-@item.Group.DateEnd.ToShortDateString()</div>
-            <div class="hidden_block">
-                Преподаватель: <a href="">@item.Group.Lecturer</a><br />
-                Площадка: <a href="">@item.Group.Area</a><br />
-                Оценка: @item.Mark
-            </div>
-        </div>
-    }*@
+
+    <div class="pagination">
+        <div class="pageNum">5</div>
+        <div class="pageNum">4</div>
+        <div class="pageNum">3</div>
+        <div class="pageNum">2</div>
+        <div class="pageNum pageNum_selected">1</div>
+    </div>
 </div>
 
 <!--TODO: подгружать конкретно это обучение аяксом? Ибо 

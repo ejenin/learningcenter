@@ -209,6 +209,8 @@
     <Content Include="Views\Catalog\Groups.cshtml" />
     <Content Include="Views\Catalog\Organizations.cshtml" />
     <Content Include="Views\Catalog\Lecturers.cshtml" />
+    <Content Include="Views\Home\Lecturer.cshtml" />
+    <Content Include="Views\Home\Area.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Confirm.cshtml" />

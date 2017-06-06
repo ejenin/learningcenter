@@ -11,7 +11,8 @@ namespace testProject.Models.ViewModels.Planning {
         Soglasovana = 0,
         Otkazana = 1,
         IzmenenoRukovoditelem = 4,
-        None = 2
+        None = 2,
+        ZaplanirovanaAvtomatom = 5
     }
 
     public class LearningCourse {
@@ -57,6 +58,8 @@ namespace testProject.Models.ViewModels.Planning {
                     return "Согласовано руководителем";
                 case Planning.Status.IzmenenoRukovoditelem:
                     return "Изменено руководителем";
+                case Planning.Status.ZaplanirovanaAvtomatom:
+                    return "Запланировано автоматически";
             }
             return "-";
         }
@@ -68,6 +71,7 @@ namespace testProject.Models.ViewModels.Planning {
                 case Planning.Status.None: return "";
                 case Planning.Status.NaSoglasovanii: return "info_row";
                 case Planning.Status.IzmenenoRukovoditelem: return "info_row";
+                case Planning.Status.ZaplanirovanaAvtomatom: return "auto_row";
                 default: return "";
             }
         }

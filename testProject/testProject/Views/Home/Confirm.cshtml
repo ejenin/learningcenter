@@ -6,6 +6,21 @@
 
 <div class="page_block">
     <span class="block_header">Заявки на обучение</span>
+    <div class="search">
+        <img src="~/Files/Default/loop.png" class="search_preview" />
+        <input type="text" class="search_input" placeholder="Поиск" />
+    </div>
+
+    <div class="block_button_panel">
+        @*<button>test</button>*@
+        <select class="coolButtonLike">
+            <option>Принять все</option>
+            <option>Принять все без пересечений</option>
+            <option>Удалить все</option>
+            <option>Удалить все пересечения</option>
+            <option>Оставить первые</option>
+        </select>
+    </div>
     @if (Model.Bids.Count > 0) {
         <table class="learning">
             <thead>
@@ -19,25 +34,41 @@
             </thead>
             <tbody>
                 @for (int i = 0; i < Model.Bids.Count; i++) {
-                    <tr>
+                    <tr class="@(Model.Bids[i].Status == testProject.BidStatus.PlannedByAutomate ? "auto_row" : "")">
                         <td>@(i + 1)</td>
                         <td>@Model.Bids[i].EmployeeFio</td>
                         <td>@Model.Bids[i].Course</td>
                         <td>@Model.Bids[i].Area</td>
                         <td>@Model.Bids[i].LearningStart.ToShortDateString()</td>
                         <td>@Model.Bids[i].LearningEnd.ToShortDateString()</td>
-                        <td>Принять<br />Изменить<br />Удалить</td>
+                        <td>
+                            @if (Model.Bids[i].Status != testProject.BidStatus.PlannedByAutomate) {
+                                <span>Принять <br /></span>
+                            }
+                            Изменить<br />
+                            Удалить
+                        </td>
                     </tr>
                 }
             </tbody>
         </table>
+
+        <div class="pagination">
+            <div class="pageNum">7</div>
+            <div class="pageNum">6</div>
+            <div class="pageNum">5</div>
+            <div class="pageNum">4</div>
+            <div class="pageNum">3</div>
+            <div class="pageNum">2</div>
+            <div class="pageNum pageNum_selected">1</div>
+        </div>
     }
     else {
         <span class="block_header"> - Отсутствуют</span>
     }
 </div>
 
-<div class="page_block">
+@*<div class="page_block">
     <span class="block_header">Заявки на обучение (в листе ожидания)</span>
     @if (Model.WaitingBids.Count > 0) {
         <table class="learning">
@@ -68,7 +99,7 @@
     else {
         <span class="block_header"> - Отсутствуют</span>
     }
-</div>
+</div>*@
 
 <div class="page_block" style="text-align: center;">
     <img src="~/Files/Default/nabrosok.png" style="width:850px;"/>

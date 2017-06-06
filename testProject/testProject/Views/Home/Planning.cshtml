@@ -70,6 +70,10 @@
     }
     else {
         <span class="block_header">Очные программы</span>
+        <div class="search">
+            <img src="~/Files/Default/loop.png" class="search_preview" />
+            <input type="text" class="search_input" placeholder="Поиск" />
+        </div>
         <table class="learning">
             <thead>
                 <th>Курс</th>
@@ -94,13 +98,21 @@
                         @if (item.Status == testProject.Models.ViewModels.Planning.Status.None || item.Status == testProject.Models.ViewModels.Planning.Status.Otkazana) {
                             <td>Выбрать группу</td>
                         }
-                        else if (item.Status == testProject.Models.ViewModels.Planning.Status.IzmenenoRukovoditelem || item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii || item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana) {
+                        else if (item.Status == testProject.Models.ViewModels.Planning.Status.IzmenenoRukovoditelem || item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii || item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana || item.Status == testProject.Models.ViewModels.Planning.Status.ZaplanirovanaAvtomatom) {
                             <td>Отменить заявку</td>
                         }
                     </tr>
                 }
             </tbody>
         </table>
+        
+        <div class="pagination">
+            <div class="pageNum">5</div>
+            <div class="pageNum">4</div>
+            <div class="pageNum">3</div>
+            <div class="pageNum">2</div>
+            <div class="pageNum pageNum_selected">1</div>
+        </div>
     }
 </div>
 
@@ -111,6 +123,10 @@
     }
     else {
         <span class="block_header">Дистанционные программы</span>
+        <div class="search">
+            <img src="~/Files/Default/loop.png" class="search_preview" />
+            <input type="text" class="search_input" placeholder="Поиск" />
+        </div>
         <table class="learning">
             <thead>
                 <th>Курс</th>
@@ -135,12 +151,18 @@
                         @if (item.Status == testProject.Models.ViewModels.Planning.Status.None || item.Status == testProject.Models.ViewModels.Planning.Status.Otkazana) {
                             <td>Выбрать группу</td>
                         }
-                        else if (item.Status == testProject.Models.ViewModels.Planning.Status.IzmenenoRukovoditelem || item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii || item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana) {
+                        else if (item.Status == testProject.Models.ViewModels.Planning.Status.IzmenenoRukovoditelem || item.Status == testProject.Models.ViewModels.Planning.Status.NaSoglasovanii || item.Status == testProject.Models.ViewModels.Planning.Status.Soglasovana || item.Status == testProject.Models.ViewModels.Planning.Status.ZaplanirovanaAvtomatom) {
                             <td>Отменить заявку</td>
                         }
                     </tr>
                 }
             </tbody>
         </table>
+
+        <div class="pagination">
+            <div class="pageNum">3</div>
+            <div class="pageNum">2</div>
+            <div class="pageNum pageNum_selected">1</div>
+        </div>
     }
 </div>

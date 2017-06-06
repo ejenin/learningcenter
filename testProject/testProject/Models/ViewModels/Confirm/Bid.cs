@@ -8,7 +8,8 @@ namespace testProject {
         WaitingToConfirm = 0,
         SwappedByHands = 1,
         Rejected = 2,
-        Confirmed = 3
+        Confirmed = 3,
+        PlannedByAutomate = -1
     }
 }
 

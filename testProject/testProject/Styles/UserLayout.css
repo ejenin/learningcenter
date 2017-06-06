@@ -252,13 +252,13 @@ table.learning {
     border: 0px;
     border-right: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .learning td {
     border: 0px;
     border-right: 1px solid lightgray;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 tr.success {
@@ -285,8 +285,14 @@ tr.not_success:hover {
     background-color: #cbdce1;
 }
 
+.auto_row {
+    background-color: #b4e2f1;
+    font-style: italic;
+}
+
 div.holder {
-    display: block;
+    /*display: block;*/
+    display: none;
     position: absolute;
     left: 0;
     top: 0;
@@ -327,4 +333,60 @@ div.button_panel_wrapper_right {
     text-align: right;
     margin-top: 10px;
     margin-bottom: -10px;
+}
+
+div.search {
+    float: right;
+}
+
+input.search_input {
+    font-size: 13px;
+    font-family: 'Open Sans';
+    width: 300px;
+}
+
+img.search_preview {
+    width: 16px;
+    height: 16px;
+    margin-bottom: -2px;
+}
+
+div.pagination {
+    /*background-color: lightblue;*/
+    height: 30px;
+    margin-top: 5px;
+    /*background-color: blue;*/
+    margin-bottom: -15px;
+}
+
+div.pageNum {
+    /*background-color: yellow;*/
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+    line-height: 25px;
+    text-align: center;
+}
+
+div.pageNum_selected {
+    background-color: #1a9f29;
+    color: white;
+}
+
+div.block_button_panel {
+    /*background-color: lightgreen;*/
+    margin-bottom: -9px;
+    margin-top: 3px;
+    text-align: right;
+}
+
+select.coolButtonLike {
+    border: 0px;
+    background-color: #1a9f29;
+    color: white;
+    padding: 5px;
+    font-family: 'Open Sans';
 }
