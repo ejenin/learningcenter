@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Успеваемость";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+<div class="page_block">
+    <span class="block_header_strong">Загрузка списка</span><br />
+    Обновить фотографию:<br />
+    <input type="file" /> <br />
+    <br />
+
+    
+        <button class="positive">Отправить</button>
+    
+</div>
+
+<div class="page_block">
+    <span class="block_header_strong">Успеваемость группы</span><br />
+    Номер группы:<br />
+    <input type="text" placeholder="Введите номер группы" style="width: 400px;" /><br />
+    <button class="positive" style="margin-top: 10px;">Найти</button><br /><br />
+
+    <b>Курс</b>: Мастерство холодных звонков<br />
+    <b>Дата начала обучения</b>: 12.04.2017<br />
+    <b>Дата окончания обучения</b>: 20.04.2017<br />
+    <table class="learning">
+        <thead>
+            <th>№</th>
+            <th>ФИО</th>
+            <th>Оценка</th>
+            <th>Статус</th>
+            <th>Пропуск</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Хорищенко Евгений Константинович</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Ахримов Денис Александрович</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Балановский Дмитрий Юрьевич</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>Митрофанова Виктория Сергеевна</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Шабалин Михаил Викторович</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>Басов Марк Андреевич</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="button_panel_wrapper_right">
+        <button class="positive_green">Сохранить</button>
+        <button class="neutral">Отмена</button>
+    </div>
+</div>
+
+<div class="page_block">
+    <span class="block_header_strong">Успеваемость студента</span><br />
+    ФИО студента:<br />
+    <input type="text" placeholder="Введите ФИО студента" style="width: 400px;" /><br />
+    <button class="positive" style="margin-top: 10px;">Найти</button><br /><br />
+
+    <b>Должность</b>: Аналитик<br />
+    <b>Подразделение</b>: Отдел планирования<br />
+
+    <table class="learning">
+        <thead>
+        <th>№</th>
+        <th>Курс</th>
+        <th>Группа</th>
+        <th>Оценка</th>
+        <th>Статус</th>
+        <th>Пропуск</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Владение Excel</td>
+                <td>17-67-2093</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Навыки личной эффективности</td>
+                <td>17-67-1010</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Мастерство Power Point</td>
+                <td>17-67-2030</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>Основы кибербезопасности</td>
+                <td>17-67-2080</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Электронный документооборот</td>
+                <td>16-67-1015</td>
+                <td style="text-align: center;"><input type="text" style="width: 40px;" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+                <td style="text-align: center;"><input type="checkbox" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="button_panel_wrapper_right">
+        <button class="positive_green">Сохранить</button>
+        <button class="neutral">Отмена</button>
+    </div>
+</div>

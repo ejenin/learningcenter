@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Планирование";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+<div class="page_block">
+    <span class="block_header_strong">Автоматическое планирование</span><br />
+    <br />
+    <span class="block_header_strong">Период</span><br /><br />
+    Дата с:<br />
+    <input type="date" style="margin-bottom: 10px;" /><br />
+    Дата по:<br />
+    <input type="date" /><br />
+    <br />
+    <button class="positive">Начать планирование</button><br />
+    <button class="negative" style="margin-top: 10px; margin-bottom: 10px;">Отменить результаты прошлого планирования</button>
+</div>
+
+<div class="page_block">
+    <span class="block_header_strong">Ручное планирование</span><br />
+    <br />
+
+    ФИО студента:<br />
+    <input type="text" placeholder="Введите ФИО студента" style="width: 400px;" /><br />
+    <br />
+    <button class="positive">Управление заявками</button><br />
+    <button class="positive" style="margin-top: 10px;">Зачислить в группу</button>
+</div>

@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Конфигурация маршрутов";
+    Layout = "~/Views/Layouts/AdministratorLayout.cshtml";
+}
+
+<div class="page_block">
+    <span class="block_header_strong">Конфигурация маршрутов</span><br />
+    <br />
+    В городе:<br />
+    <input type="text" style="width: 400px;" placeholder="Введите название города"/><br />
+
+    <br />
+    Могут собираться сотрудники из:<br />
+    <input type="text" placeholder="Город"/>
+    <input type="text" placeholder="Приоритет" />
+    <button>Сохранить</button>
+    <table class="learning">
+        <thead>
+            <th>№</th>
+            <th>Город</th>
+            <th>Приоритет</th>
+            <th>Действия</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Нижневартовск</td>
+                <td>1</td>
+                <td>Редактировать<br />Удалить</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Омск</td>
+                <td>1</td>
+                <td>Редактировать<br />Удалить</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Ханты-Мансийск</td>
+                <td>2</td>
+                <td>Редактировать<br />Удалить</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr />
+    <span class="block_header_strong">Маршруты</span><br />
+    <table class="learning">
+        <thead>
+            <th>№</th>
+            <th>Город-родитель</th>
+            <th>Города-потомки</th>
+            <th>Действия</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Тюмень</td>
+                <td>Тобольск (1)<br />Ишим (1)<br />Ханты-Мансийск (2)</td>
+                <td>Редактировать<br />Удалить</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Нижневартовск</td>
+                <td>Ханты-Мансийск (1)<br />Новый Уренгой (2)</td>
+                <td>Редактировать<br />Удалить</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Новый Уренгой</td>
+                <td>Нижневартовск (1)<br />Омск (1)<br />Ханты-Мансийск (2)</td>
+                <td>Редактировать<br />Удалить</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

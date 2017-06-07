@@ -212,6 +212,10 @@
     <Content Include="Views\Home\Lecturer.cshtml" />
     <Content Include="Views\Home\Area.cshtml" />
     <Content Include="Views\Home\Group.cshtml" />
+    <Content Include="Views\Administration\CitiesConfig.cshtml" />
+    <Content Include="Views\Administration\Reports.cshtml" />
+    <Content Include="Views\Administration\Planning.cshtml" />
+    <Content Include="Views\Administration\Progress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Confirm.cshtml" />
